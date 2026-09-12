@@ -1,4 +1,3 @@
-# Tp_Estructura_de_Datos
 # MusicBox
 
 Sistema de recomendaciones musicales — Trabajo Práctico Integrador de Estructuras de Datos.
@@ -38,21 +37,24 @@ musicbox/
 
    ```
    === MUSICBOX ===
-   1.Buscar canciones por titulo
-   2.Buscar canciones por artista
-   3.Explorar por genero
-   4.Ver mi Top de favoritas
-   5.Ver canciones relacionadas
-   6.Calificar cancion
-   0.Salir
-   ```
+   1. Lista de Temas
+   2. Buscar canciones por titulo
+   3. Buscar canciones por artista
+   4. Explorar por genero
+   5. Ver mi Top de favoritas
+   6. Ver canciones relacionadas
+   7. Calificar cancion
+   0. Salir
 
-## Funcionalidades actuales (TP1)
+## Funcionalidades actuales
 
-- **Listar**: muestra todas las canciones cargadas del catálogo.
-- **Buscar**: busca coincidencias parciales por título o por nombre de artista.
-- **Filtrar**: muestra todas las canciones de un género dado.
-
+1. Lista de Temas: muestra el catálogo completo, sin filtrar (cumple la operación "Listar").
+2. Buscar canciones por título:Te pide el nombre de tu tema preferido o el que buscas en el momento.
+3. Buscar canciones por artista: Te pide a tu artista y muestra todos sus temas correspondientes-
+4. Explorar por género: muestra todas las canciones de un género
+5. Ver mi Top de favoritas: pendiente
+6. Ver canciones relacionadas: pendiente
+7. Calificar canción: pendiente
 ## Modelo de clases
 
 - `Artista`: nombre y país.

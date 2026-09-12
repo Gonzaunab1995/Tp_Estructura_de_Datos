@@ -4,8 +4,6 @@ import os
 RUTA_DATOS = os.path.join("datos", "canciones.json")
 
 
-# ------------------------- Clases del dominio -------------------------
-
 class Artista:
     def __init__(self, nombre, pais):
         self._nombre = nombre
@@ -64,6 +62,7 @@ class Cancion:
         self._album = album
         self._genero = genero
         self._duracion = duracion
+        self._mi_puntaje = 0
 
     @property
     def titulo(self):
@@ -85,18 +84,23 @@ class Cancion:
     def duracion(self):
         return self._duracion
 
+    @property
+    def mi_puntaje(self):
+        return self._mi_puntaje
+
+    @mi_puntaje.setter
+    def mi_puntaje(self, valor):
+        self._mi_puntaje = valor
+
     def __repr__(self):
         return (
-            f"{self._titulo} - {self._artista.nombre} "
+            f"{self._titulo} - {self._artista.nombre} ({self._artista.pais}) "
             f"({self._genero.nombre}, {self._album.anio}) "
             f"[{self._duracion}s]"
         )
 
 
-# ------------------------- Carga de datos -------------------------
-
 def cargar_canciones(ruta):
-   
     with open(ruta, "r", encoding="utf-8") as archivo:
         datos = json.load(archivo)
 
@@ -118,69 +122,73 @@ def cargar_canciones(ruta):
     return canciones
 
 
-# ------------------------- Listar, Buscar, Filtrar -------------------------
-
 def listar_canciones(canciones):
-    for cancion in canciones:
-        print(cancion)
+    return canciones
 
 
-def buscar_cancion(canciones, texto):
-    
+def buscar_por_titulo(canciones, texto):
     texto = texto.casefold()
-    return [
-        cancion for cancion in canciones
-        if texto in cancion.titulo.casefold()
-        or texto in cancion.artista.nombre.casefold()
-    ]
+    return [c for c in canciones if texto in c.titulo.casefold()]
+
+
+def buscar_por_artista(canciones, texto):
+    texto = texto.casefold()
+    return [c for c in canciones if texto in c.artista.nombre.casefold()]
 
 
 def filtrar_por_genero(canciones, genero):
-    return [
-        cancion for cancion in canciones
-        if cancion.genero.nombre.casefold() == genero.casefold()
-    ]
+    return [c for c in canciones if c.genero.nombre.casefold() == genero.casefold()]
 
 
-# ------------------------- Terminal -------------------------
+def mostrar_resultados(resultados, mensaje_vacio):
+    if resultados:
+        for cancion in resultados:
+            print(cancion)
+    else:
+        print(mensaje_vacio)
+
 
 def menu(canciones):
     while True:
-        print("\n=== MUSICBOX ===")
-        print("1. Listar canciones")
-        print("2. Buscar canciones (titulo o artista)")
-        print("3. Filtrar por genero")
+        print("\n" + "-" * 50)
+        print("MusicBox".center(50))
+        print("-" * 50)
+        print("1. Lista de Temas")
+        print("2. Buscar canciones por titulo")
+        print("3. Buscar canciones por artista")
+        print("4. Explorar por genero")
+        print("5. Ver mi Top de favoritas")
+        print("6. Ver canciones relacionadas")
+        print("7. Calificar cancion")
         print("0. Salir")
 
-        opcion = input("Seleccione una opcion: ")
+        opcion = input("Elegi una opcion: ")
 
         if opcion == "1":
-            listar_canciones(canciones)
+            resultados = listar_canciones(canciones)
+            mostrar_resultados(resultados, "El catalogo esta vacio.")
 
         elif opcion == "2":
-            texto = input("Ingrese titulo o artista: ")
-            resultados = buscar_cancion(canciones, texto)
-            if resultados:
-                for cancion in resultados:
-                    print(cancion)
-            else:
-                print("No se encontraron coincidencias.")
+            texto = input("Que tema buscas? ")
+            resultados = buscar_por_titulo(canciones, texto)
+            mostrar_resultados(resultados, "No se encontro ese titulo.")
 
         elif opcion == "3":
-            genero = input("Ingrese el genero: ")
+            texto = input("Que artista o banda buscas? ")
+            resultados = buscar_por_artista(canciones, texto)
+            mostrar_resultados(resultados, "No se encontro ese artista.")
+
+        elif opcion == "4":
+            genero = input("Que genero queres explorar? ")
             resultados = filtrar_por_genero(canciones, genero)
-            if resultados:
-                for cancion in resultados:
-                    print(cancion)
-            else:
-                print("No hay canciones de ese genero en el catalogo.")
+            mostrar_resultados(resultados, "No hay canciones de ese genero en el catalogo.")
 
         elif opcion == "0":
-            print("Hasta luego.")
+            print("Nos vemos la proxima.")
             break
 
         else:
-            print("Opcion incorrecta.")
+            print("Opcion invalida.")
 
 
 def main():
