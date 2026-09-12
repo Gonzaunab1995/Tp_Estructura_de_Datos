@@ -1,0 +1,191 @@
+[
+    {
+        "titulo": "De musica ligera",
+        "artista": "Soda Stereo",
+        "pais": "Argentina",
+        "album": "Cancion animal",
+        "anio": 1990,
+        "genero": "Rock",
+        "duracion": 216
+    },
+    {
+        "titulo": "Persiana americana",
+        "artista": "Soda Stereo",
+        "pais": "Argentina",
+        "album": "Signos",
+        "anio": 1986,
+        "genero": "Rock",
+        "duracion": 265
+    },
+    {
+        "titulo": "Flaca",
+        "artista": "Andres Calamaro",
+        "pais": "Argentina",
+        "album": "Alta suciedad",
+        "anio": 1997,
+        "genero": "Rock",
+        "duracion": 250
+    },
+    {
+        "titulo": "Billie Jean",
+        "artista": "Michael Jackson",
+        "pais": "Estados Unidos",
+        "album": "Thriller",
+        "anio": 1982,
+        "genero": "Pop",
+        "duracion": 294
+    },
+    {
+        "titulo": "Bohemian Rhapsody",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "A Night at the Opera",
+        "anio": 1975,
+        "genero": "Rock",
+        "duracion": 355
+    },
+    {
+        "titulo": "Smells Like Teen Spirit",
+        "artista": "Nirvana",
+        "pais": "Estados Unidos",
+        "album": "Nevermind",
+        "anio": 1991,
+        "genero": "Grunge",
+        "duracion": 301
+    },
+    {
+        "titulo": "One More Time",
+        "artista": "Daft Punk",
+        "pais": "Francia",
+        "album": "Discovery",
+        "anio": 2000,
+        "genero": "House",
+        "duracion": 320
+    },
+    {
+        "titulo": "Get Lucky",
+        "artista": "Daft Punk",
+        "pais": "Francia",
+        "album": "Random Access Memories",
+        "anio": 2013,
+        "genero": "House",
+        "duracion": 369
+    },
+    {
+        "titulo": "Take Five",
+        "artista": "Dave Brubeck",
+        "pais": "Estados Unidos",
+        "album": "Time Out",
+        "anio": 1959,
+        "genero": "Jazz",
+        "duracion": 324
+    },
+    {
+        "titulo": "Superstition",
+        "artista": "Stevie Wonder",
+        "pais": "Estados Unidos",
+        "album": "Talking Book",
+        "anio": 1972,
+        "genero": "Funk",
+        "duracion": 245
+    },
+    {
+        "titulo": "Losing My Religion",
+        "artista": "R.E.M.",
+        "pais": "Estados Unidos",
+        "album": "Out of Time",
+        "anio": 1991,
+        "genero": "Alternative Rock",
+        "duracion": 268
+    },
+    {
+        "titulo": "Master of Puppets",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Master of Puppets",
+        "anio": 1986,
+        "genero": "Thrash Metal",
+        "duracion": 515
+    },
+    {
+        "titulo": "Enter Sandman",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Metallica (Black Album)",
+        "anio": 1991,
+        "genero": "Heavy Metal",
+        "duracion": 331
+    },
+    {
+        "titulo": "One",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "...And Justice for All",
+        "anio": 1988,
+        "genero": "Thrash Metal",
+        "duracion": 447
+    },
+    {
+        "titulo": "Nothing Else Matters",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Metallica (Black Album)",
+        "anio": 1991,
+        "genero": "Rock",
+        "duracion": 388
+    },
+    {
+        "titulo": "For Whom the Bell Tolls",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Ride the Lightning",
+        "anio": 1984,
+        "genero": "Thrash Metal",
+        "duracion": 310
+    },
+    {
+        "titulo": "Fade to Black",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Ride the Lightning",
+        "anio": 1984,
+        "genero": "Thrash Metal",
+        "duracion": 417
+    },
+    {
+        "titulo": "Sad But True",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Metallica (Black Album)",
+        "anio": 1991,
+        "genero": "Heavy Metal",
+        "duracion": 324
+    },
+    {
+        "titulo": "Seek and Destroy",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Kill 'Em All",
+        "anio": 1983,
+        "genero": "Thrash Metal",
+        "duracion": 412
+    },
+    {
+        "titulo": "Battery",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Master of Puppets",
+        "anio": 1986,
+        "genero": "Thrash Metal",
+        "duracion": 312
+    },
+    {
+        "titulo": "Whiskey in the Jar",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Garage Inc.",
+        "anio": 1998,
+        "genero": "Hard Rock",
+        "duracion": 312
+    }
+]
