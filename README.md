@@ -38,10 +38,13 @@ musicbox/
 
    ```
    === MUSICBOX ===
-   1. Listar canciones
-   2. Buscar canciones (titulo o artista)
-   3. Filtrar por genero
-   0. Salir
+   1.Buscar canciones por titulo
+   2.Buscar canciones por artista
+   3.Explorar por genero
+   4.Ver mi Top de favoritas
+   5.Ver canciones relacionadas
+   6.Calificar cancion
+   0.Salir
    ```
 
 ## Funcionalidades actuales (TP1)
