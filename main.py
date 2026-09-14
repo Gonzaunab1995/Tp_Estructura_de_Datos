@@ -179,11 +179,9 @@ def menu(canciones):
             mostrar_resultados(resultados, "No se encontro ese artista.")
 
         elif opcion == "4":
-            genero = input("Ingrese el genero: ")
-            resultados = filtrar_por_genero(genero)
-
-            for cancion in resultados:
-                print(cancion)
+            genero = input("Que genero queres explorar? ")
+            resultados = filtrar_por_genero(canciones, genero)
+            mostrar_resultados(resultados, "No hay canciones de ese genero en el catalogo.")
 
         elif opcion == "5":
             print("Funcion de favoritas.")
