@@ -178,13 +178,24 @@ def menu(canciones):
             resultados = buscar_por_artista(canciones, texto)
             mostrar_resultados(resultados, "No se encontro ese artista.")
 
-        elif opcion == "4":
-            genero = input("Que genero queres explorar? ")
-            resultados = filtrar_por_genero(canciones, genero)
-            mostrar_resultados(resultados, "No hay canciones de ese genero en el catalogo.")
+       elif opcion == "4":
+            genero = input("Ingrese el genero: ")
+            resultados = filtrar_por_genero(genero)
+
+            for cancion in resultados:
+                print(cancion)
+
+        elif opcion == "5":
+            print("Funcion de favoritas.")
+
+        elif opcion == "6":
+            print("Funcion de canciones relacionadas.")
+
+        elif opcion == "7":
+            print("Funcion de calificacion.")
 
         elif opcion == "0":
-            print("Nos vemos la proxima.")
+            print("Gracias por usar MusicBox.")
             break
 
         else:
