@@ -178,7 +178,7 @@ def menu(canciones):
             resultados = buscar_por_artista(canciones, texto)
             mostrar_resultados(resultados, "No se encontro ese artista.")
 
-       elif opcion == "4":
+        elif opcion == "4":
             genero = input("Ingrese el genero: ")
             resultados = filtrar_por_genero(genero)
 
