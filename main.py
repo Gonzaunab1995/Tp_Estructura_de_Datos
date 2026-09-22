@@ -1,5 +1,7 @@
 import json
 import os
+import time
+import random
 
 RUTA_DATOS = os.path.join("datos", "canciones.json")
 
@@ -98,7 +100,42 @@ class Cancion:
             f"({self._genero.nombre}, {self._album.anio}) "
             f"[{self._duracion}s]"
         )
+class NodoArbol:
+    def __init__(self, cancion):
+        self.cancion = cancion
+        self.izquierda = None
+        self.derecha = None
 
+
+def insertar_arbol(raiz, cancion):
+    if raiz is None:
+        return NodoArbol(cancion)
+
+    titulo_nuevo = cancion.titulo.casefold()
+    titulo_actual = raiz.cancion.titulo.casefold()
+
+    if titulo_nuevo < titulo_actual:
+        raiz.izquierda = insertar_arbol(raiz.izquierda, cancion)
+    else:
+        raiz.derecha = insertar_arbol(raiz.derecha, cancion)
+
+    return raiz
+
+
+def buscar_en_arbol(raiz, titulo):
+    if raiz is None:
+        return None
+
+    titulo = titulo.casefold()
+    titulo_actual = raiz.cancion.titulo.casefold()
+
+    if titulo == titulo_actual:
+        return raiz.cancion
+
+    if titulo < titulo_actual:
+        return buscar_en_arbol(raiz.izquierda, titulo)
+
+    return buscar_en_arbol(raiz.derecha, titulo)
 
 def cargar_canciones(ruta):
     with open(ruta, "r", encoding="utf-8") as archivo:
@@ -139,6 +176,37 @@ def buscar_por_artista(canciones, texto):
 def filtrar_por_genero(canciones, genero):
     return [c for c in canciones if c.genero.nombre.casefold() == genero.casefold()]
 
+def generar_canciones_prueba(cantidad):
+    canciones = []
+
+    for i in range(cantidad):
+        artista = Artista("Artista prueba", "Argentina")
+        genero = Genero("Pop")
+        album = Album("Album prueba", 2026, artista)
+
+        cancion = Cancion(
+            f"Cancion {i}",
+            artista,
+            album,
+            genero,
+            180
+        )
+
+        canciones.append(cancion)
+
+    random.shuffle(canciones)
+
+    return canciones
+
+def buscar_secuencial(canciones, titulo):
+    titulo = titulo.casefold()
+
+    for cancion in canciones:
+        if cancion.titulo.casefold() == titulo:
+            return cancion
+
+    return None
+
 
 def mostrar_resultados(resultados, mensaje_vacio):
     if resultados:
@@ -146,7 +214,73 @@ def mostrar_resultados(resultados, mensaje_vacio):
             print(cancion)
     else:
         print(mensaje_vacio)
+def experimento_complejidad(canciones):
 
+    
+
+    exper_prueba = [100, 1000, 10000, 100000]
+
+    print("\n" + "=" * 70)
+    print("EXPERIMENTO DE COMPLEJIDAD")
+    print("=" * 70)
+
+    print(
+        f"{'N ELEMENTOS':<15}"
+        f"{'BÚSQUEDA SECUENCIAL':<25}"
+        f"{'BÚSQUEDA EN ÁRBOL':<25}"
+    )
+
+    print("-" * 70)
+
+    for n in exper_prueba:
+
+        
+        canciones = generar_canciones_prueba(n)
+
+        # Creamos el árbol
+        raiz = None
+
+        for cancion in canciones:
+            raiz = insertar_arbol(raiz, cancion)
+
+        # Buscamos el último elemento
+        # para forzar un caso de búsqueda largo
+        titulo_objetivo = canciones[-1].titulo
+
+        
+        # BÚSQUEDA SECUENCIAL
+       
+        inicio = time.perf_counter()
+
+        buscar_secuencial(canciones, titulo_objetivo)
+
+        fin = time.perf_counter()
+
+        tiempo_secuencial = (fin - inicio) * 1000
+
+        
+        # BÚSQUEDA EN ÁRBOL
+        
+
+        inicio = time.perf_counter()
+
+        buscar_en_arbol(raiz, titulo_objetivo)
+
+        fin = time.perf_counter()
+
+        tiempo_arbol = (fin - inicio) * 1000
+
+        # Mostrar resultados
+
+        print(
+            f"{n:<15}"
+            f"{tiempo_secuencial:<25.6f}"
+            f"{tiempo_arbol:<25.6f}"
+        )
+
+    print("\nComplejidad teórica:")
+    print("Búsqueda secuencial: O(n)")
+    print("Búsqueda en árbol:   O(log n) promedio")
 
 def menu(canciones):
     while True:
@@ -160,6 +294,7 @@ def menu(canciones):
         print("5. Ver mi Top de favoritas")
         print("6. Ver canciones relacionadas")
         print("7. Calificar cancion")
+        print("8. Experimento de complejidad")
         print("0. Salir")
 
         opcion = input("Elegi una opcion: ")
@@ -191,6 +326,8 @@ def menu(canciones):
 
         elif opcion == "7":
             print("Funcion de calificacion.")
+        elif opcion == "8":
+         experimento_complejidad(canciones)
 
         elif opcion == "0":
             print("Gracias por usar MusicBox.")
