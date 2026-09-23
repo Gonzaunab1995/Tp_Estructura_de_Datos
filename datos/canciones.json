@@ -1,5 +1,1292 @@
 [
     {
+        "titulo": "Losing My Religion",
+        "artista": "R.E.M.",
+        "pais": "Estados Unidos",
+        "album": "Out of Time",
+        "anio": 1991,
+        "genero": "Alternative Rock",
+        "duracion": 268
+    },
+    {
+        "titulo": "Ave de Paso",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Ave de Paso",
+        "anio": 1995,
+        "genero": "Chacarera",
+        "duracion": 210
+    },
+    {
+        "titulo": "Carinito Malo",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Los Nocheros",
+        "anio": 1990,
+        "genero": "Chacarera",
+        "duracion": 190
+    },
+    {
+        "titulo": "Chacarera del Rancho",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Origen",
+        "anio": 2010,
+        "genero": "Chacarera",
+        "duracion": 200
+    },
+    {
+        "titulo": "Cielo del 22",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Cielo del 22",
+        "anio": 2000,
+        "genero": "Chacarera",
+        "duracion": 195
+    },
+    {
+        "titulo": "Cuando Tenga la Tierra",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Grandes Exitos",
+        "anio": 1998,
+        "genero": "Chacarera",
+        "duracion": 200
+    },
+    {
+        "titulo": "Chica Sexy",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2011,
+        "genero": "Cuarteto",
+        "duracion": 195
+    },
+    {
+        "titulo": "Eso Duele",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2012,
+        "genero": "Cuarteto",
+        "duracion": 200
+    },
+    {
+        "titulo": "La Cabana",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Ven y Dime",
+        "anio": 2000,
+        "genero": "Cuarteto",
+        "duracion": 200
+    },
+    {
+        "titulo": "La Cumbita",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Ven a Bailar",
+        "anio": 1999,
+        "genero": "Cuarteto",
+        "duracion": 190
+    },
+    {
+        "titulo": "Olvidala",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2007,
+        "genero": "Cuarteto",
+        "duracion": 195
+    },
+    {
+        "titulo": "Que Bonito",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2005,
+        "genero": "Cuarteto",
+        "duracion": 200
+    },
+    {
+        "titulo": "Que Locura",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Ven a Bailar",
+        "anio": 1999,
+        "genero": "Cuarteto",
+        "duracion": 195
+    },
+    {
+        "titulo": "Quiero Saber de Ti",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2013,
+        "genero": "Cuarteto",
+        "duracion": 205
+    },
+    {
+        "titulo": "Rafaga de Amor",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Ven y Dime",
+        "anio": 2000,
+        "genero": "Cuarteto",
+        "duracion": 195
+    },
+    {
+        "titulo": "Ritmos Merembe",
+        "artista": "Banda XXI",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2010,
+        "genero": "Cuarteto",
+        "duracion": 190
+    },
+    {
+        "titulo": "Ando Rajao",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "Lo Mejor del Potro",
+        "anio": 1996,
+        "genero": "Cuarteto",
+        "duracion": 230
+    },
+    {
+        "titulo": "Como Olvidarte",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "La Mano del Potro",
+        "anio": 1999,
+        "genero": "Cuarteto",
+        "duracion": 200
+    },
+    {
+        "titulo": "Diste Vuelta la Pagina",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "Fuerte",
+        "anio": 1997,
+        "genero": "Cuarteto",
+        "duracion": 200
+    },
+    {
+        "titulo": "Gitana",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "Gracias a Dios Soy Argentino",
+        "anio": 1998,
+        "genero": "Cuarteto",
+        "duracion": 210
+    },
+    {
+        "titulo": "Ha Llegado el Potro",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "Ha Llegado el Potro",
+        "anio": 1994,
+        "genero": "Cuarteto",
+        "duracion": 210
+    },
+    {
+        "titulo": "Mientras No Estes",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "Fuerte",
+        "anio": 1997,
+        "genero": "Cuarteto",
+        "duracion": 205
+    },
+    {
+        "titulo": "No Voy en Tren",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "La Mano del Potro",
+        "anio": 1999,
+        "genero": "Cuarteto",
+        "duracion": 205
+    },
+    {
+        "titulo": "Que Se Mueran de Envidia",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "La Mano del Potro",
+        "anio": 1999,
+        "genero": "Cuarteto",
+        "duracion": 200
+    },
+    {
+        "titulo": "Soy Cordobes",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "Fuerte",
+        "anio": 1997,
+        "genero": "Cuarteto",
+        "duracion": 215
+    },
+    {
+        "titulo": "Traidora",
+        "artista": "Rodrigo",
+        "pais": "Argentina",
+        "album": "La Mano del Potro",
+        "anio": 1999,
+        "genero": "Cuarteto",
+        "duracion": 195
+    },
+    {
+        "titulo": "Borracho y Amanecido",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "Esquivando el Exito",
+        "anio": 2012,
+        "genero": "Cumbia Villera",
+        "duracion": 205
+    },
+    {
+        "titulo": "Carita de Alfajor",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "Carita de Alfajor",
+        "anio": 2021,
+        "genero": "Cumbia Villera",
+        "duracion": 190
+    },
+    {
+        "titulo": "Corazon de Arroz",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "Sin Remedio",
+        "anio": 2005,
+        "genero": "Cumbia Villera",
+        "duracion": 200
+    },
+    {
+        "titulo": "El Mono Relojero",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "El Mono Relojero",
+        "anio": 2025,
+        "genero": "Cumbia Villera",
+        "duracion": 195
+    },
+    {
+        "titulo": "La Picadura",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "20 Grandes Exitos",
+        "anio": 2015,
+        "genero": "Cumbia Villera",
+        "duracion": 200
+    },
+    {
+        "titulo": "Perrito Malvado",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "Single",
+        "anio": 2021,
+        "genero": "Cumbia Villera",
+        "duracion": 200
+    },
+    {
+        "titulo": "Se Descontrolo",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "Operacion Damas Gratis",
+        "anio": 2002,
+        "genero": "Cumbia Villera",
+        "duracion": 210
+    },
+    {
+        "titulo": "Sos Boton",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "En Vivo - Hasta las Manos",
+        "anio": 2001,
+        "genero": "Cumbia Villera",
+        "duracion": 210
+    },
+    {
+        "titulo": "Vamos a Robar",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "Solo para Entendidos",
+        "anio": 2006,
+        "genero": "Cumbia Villera",
+        "duracion": 195
+    },
+    {
+        "titulo": "Yo Soy Polenta",
+        "artista": "Damas Gratis",
+        "pais": "Argentina",
+        "album": "100% Negro Cumbiero",
+        "anio": 2004,
+        "genero": "Cumbia Villera",
+        "duracion": 200
+    },
+    {
+        "titulo": "Bangarang",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Bangarang",
+        "anio": 2011,
+        "genero": "Dubstep",
+        "duracion": 214
+    },
+    {
+        "titulo": "First of the Year (Equinox)",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Bangarang",
+        "anio": 2011,
+        "genero": "Dubstep",
+        "duracion": 250
+    },
+    {
+        "titulo": "Kill Everybody",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Recess",
+        "anio": 2014,
+        "genero": "Dubstep",
+        "duracion": 300
+    },
+    {
+        "titulo": "Purple Lamborghini",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Suicide Squad: The Album (single)",
+        "anio": 2016,
+        "genero": "Dubstep",
+        "duracion": 194
+    },
+    {
+        "titulo": "Ragga Bomb",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Single",
+        "anio": 2010,
+        "genero": "Dubstep",
+        "duracion": 230
+    },
+    {
+        "titulo": "Right In",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Recess",
+        "anio": 2014,
+        "genero": "Dubstep",
+        "duracion": 258
+    },
+    {
+        "titulo": "Rock n' Roll (Will Take You to the Mountain)",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Scary Monsters and Nice Sprites",
+        "anio": 2010,
+        "genero": "Dubstep",
+        "duracion": 244
+    },
+    {
+        "titulo": "Scary Monsters and Nice Sprites",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Scary Monsters and Nice Sprites",
+        "anio": 2010,
+        "genero": "Dubstep",
+        "duracion": 255
+    },
+    {
+        "titulo": "Summit",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Single",
+        "anio": 2013,
+        "genero": "Dubstep",
+        "duracion": 247
+    },
+    {
+        "titulo": "Try It Out",
+        "artista": "Skrillex",
+        "pais": "Estados Unidos",
+        "album": "Single",
+        "anio": 2011,
+        "genero": "Dubstep",
+        "duracion": 240
+    },
+    {
+        "titulo": "Cerquita de Vos",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Cerquita de Vos",
+        "anio": 2005,
+        "genero": "Folclore",
+        "duracion": 210
+    },
+    {
+        "titulo": "Cuando Ya No Este",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Grandes Exitos",
+        "anio": 2001,
+        "genero": "Folclore",
+        "duracion": 205
+    },
+    {
+        "titulo": "Cunatai",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Herencia",
+        "anio": 2008,
+        "genero": "Folclore",
+        "duracion": 205
+    },
+    {
+        "titulo": "Para Cantarle a mi Gente",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "Para Cantarle a mi Gente",
+        "anio": 1993,
+        "genero": "Folclore",
+        "duracion": 200
+    },
+    {
+        "titulo": "Zamba de mi Esperanza",
+        "artista": "Los Nocheros",
+        "pais": "Argentina",
+        "album": "En Vivo",
+        "anio": 1996,
+        "genero": "Folclore",
+        "duracion": 220
+    },
+    {
+        "titulo": "Superstition",
+        "artista": "Stevie Wonder",
+        "pais": "Estados Unidos",
+        "album": "Talking Book",
+        "anio": 1972,
+        "genero": "Funk",
+        "duracion": 245
+    },
+    {
+        "titulo": "Around the World",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Californication",
+        "anio": 1999,
+        "genero": "Funk Rock",
+        "duracion": 240
+    },
+    {
+        "titulo": "By the Way",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "By the Way",
+        "anio": 2002,
+        "genero": "Funk Rock",
+        "duracion": 216
+    },
+    {
+        "titulo": "Californication",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Californication",
+        "anio": 1999,
+        "genero": "Funk Rock",
+        "duracion": 329
+    },
+    {
+        "titulo": "Can't Stop",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "By the Way",
+        "anio": 2002,
+        "genero": "Funk Rock",
+        "duracion": 269
+    },
+    {
+        "titulo": "Dani California",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Stadium Arcadium",
+        "anio": 2006,
+        "genero": "Funk Rock",
+        "duracion": 284
+    },
+    {
+        "titulo": "Give It Away",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Blood Sugar Sex Magik",
+        "anio": 1991,
+        "genero": "Funk Rock",
+        "duracion": 277
+    },
+    {
+        "titulo": "Otherside",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Californication",
+        "anio": 1999,
+        "genero": "Funk Rock",
+        "duracion": 255
+    },
+    {
+        "titulo": "Scar Tissue",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Californication",
+        "anio": 1999,
+        "genero": "Funk Rock",
+        "duracion": 217
+    },
+    {
+        "titulo": "Snow (Hey Oh)",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Stadium Arcadium",
+        "anio": 2006,
+        "genero": "Funk Rock",
+        "duracion": 334
+    },
+    {
+        "titulo": "Under the Bridge",
+        "artista": "Red Hot Chili Peppers",
+        "pais": "Estados Unidos",
+        "album": "Blood Sugar Sex Magik",
+        "anio": 1991,
+        "genero": "Funk Rock",
+        "duracion": 264
+    },
+    {
+        "titulo": "Smells Like Teen Spirit",
+        "artista": "Nirvana",
+        "pais": "Estados Unidos",
+        "album": "Nevermind",
+        "anio": 1991,
+        "genero": "Grunge",
+        "duracion": 301
+    },
+    {
+        "titulo": "Whiskey in the Jar",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Garage Inc.",
+        "anio": 1998,
+        "genero": "Hard Rock",
+        "duracion": 312
+    },
+    {
+        "titulo": "Enter Sandman",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Metallica (Black Album)",
+        "anio": 1991,
+        "genero": "Heavy Metal",
+        "duracion": 331
+    },
+    {
+        "titulo": "Sad But True",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Metallica (Black Album)",
+        "anio": 1991,
+        "genero": "Heavy Metal",
+        "duracion": 324
+    },
+    {
+        "titulo": "Get Lucky",
+        "artista": "Daft Punk",
+        "pais": "Francia",
+        "album": "Random Access Memories",
+        "anio": 2013,
+        "genero": "House",
+        "duracion": 369
+    },
+    {
+        "titulo": "One More Time",
+        "artista": "Daft Punk",
+        "pais": "Francia",
+        "album": "Discovery",
+        "anio": 2000,
+        "genero": "House",
+        "duracion": 320
+    },
+    {
+        "titulo": "Amerika",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Reise, Reise",
+        "anio": 2004,
+        "genero": "Industrial Metal",
+        "duracion": 223
+    },
+    {
+        "titulo": "Deutschland",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Rammstein",
+        "anio": 2019,
+        "genero": "Industrial Metal",
+        "duracion": 328
+    },
+    {
+        "titulo": "Du Hast",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Sehnsucht",
+        "anio": 1997,
+        "genero": "Industrial Metal",
+        "duracion": 234
+    },
+    {
+        "titulo": "Engel",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Sehnsucht",
+        "anio": 1997,
+        "genero": "Industrial Metal",
+        "duracion": 265
+    },
+    {
+        "titulo": "Feuer Frei!",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Mutter",
+        "anio": 2001,
+        "genero": "Industrial Metal",
+        "duracion": 194
+    },
+    {
+        "titulo": "Ich Will",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Mutter",
+        "anio": 2001,
+        "genero": "Industrial Metal",
+        "duracion": 234
+    },
+    {
+        "titulo": "Mein Herz Brennt",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Mutter",
+        "anio": 2001,
+        "genero": "Industrial Metal",
+        "duracion": 257
+    },
+    {
+        "titulo": "Pussy",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Liebe ist für alle da",
+        "anio": 2009,
+        "genero": "Industrial Metal",
+        "duracion": 256
+    },
+    {
+        "titulo": "Rosenrot",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Rosenrot",
+        "anio": 2005,
+        "genero": "Industrial Metal",
+        "duracion": 257
+    },
+    {
+        "titulo": "Sonne",
+        "artista": "Rammstein",
+        "pais": "Alemania",
+        "album": "Mutter",
+        "anio": 2001,
+        "genero": "Industrial Metal",
+        "duracion": 269
+    },
+    {
+        "titulo": "Take Five",
+        "artista": "Dave Brubeck",
+        "pais": "Estados Unidos",
+        "album": "Time Out",
+        "anio": 1959,
+        "genero": "Jazz",
+        "duracion": 324
+    },
+    {
+        "titulo": "Before I Forget",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "Vol. 3: (The Subliminal Verses)",
+        "anio": 2004,
+        "genero": "Nu Metal",
+        "duracion": 337
+    },
+    {
+        "titulo": "Custer",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": ".5: The Gray Chapter",
+        "anio": 2014,
+        "genero": "Nu Metal",
+        "duracion": 233
+    },
+    {
+        "titulo": "Duality",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "Vol. 3: (The Subliminal Verses)",
+        "anio": 2004,
+        "genero": "Nu Metal",
+        "duracion": 253
+    },
+    {
+        "titulo": "Left Behind",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "Iowa",
+        "anio": 2001,
+        "genero": "Nu Metal",
+        "duracion": 202
+    },
+    {
+        "titulo": "Psychosocial",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "All Hope Is Gone",
+        "anio": 2008,
+        "genero": "Nu Metal",
+        "duracion": 302
+    },
+    {
+        "titulo": "Spit It Out",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "Slipknot",
+        "anio": 1999,
+        "genero": "Nu Metal",
+        "duracion": 244
+    },
+    {
+        "titulo": "Sulfur",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "All Hope Is Gone",
+        "anio": 2008,
+        "genero": "Nu Metal",
+        "duracion": 289
+    },
+    {
+        "titulo": "The Devil in I",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": ".5: The Gray Chapter",
+        "anio": 2014,
+        "genero": "Nu Metal",
+        "duracion": 320
+    },
+    {
+        "titulo": "Unsainted",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "We Are Not Your Kind",
+        "anio": 2019,
+        "genero": "Nu Metal",
+        "duracion": 324
+    },
+    {
+        "titulo": "Wait and Bleed",
+        "artista": "Slipknot",
+        "pais": "Estados Unidos",
+        "album": "Slipknot",
+        "anio": 1999,
+        "genero": "Nu Metal",
+        "duracion": 232
+    },
+    {
+        "titulo": "Billie Jean",
+        "artista": "Michael Jackson",
+        "pais": "Estados Unidos",
+        "album": "Thriller",
+        "anio": 1982,
+        "genero": "Pop",
+        "duracion": 294
+    },
+    {
+        "titulo": "Bailando Bachata",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "No Hay Imposibles",
+        "anio": 2014,
+        "genero": "Pop Latino",
+        "duracion": 190
+    },
+    {
+        "titulo": "Caprichosa",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Simplemente...",
+        "anio": 1996,
+        "genero": "Pop Latino",
+        "duracion": 235
+    },
+    {
+        "titulo": "Cuidarte el Alma",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "En Todo Estare",
+        "anio": 2014,
+        "genero": "Pop Latino",
+        "duracion": 215
+    },
+    {
+        "titulo": "Lola",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Atado a tu Amor",
+        "anio": 1998,
+        "genero": "Pop Latino",
+        "duracion": 210
+    },
+    {
+        "titulo": "Salome",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Grandes Exitos",
+        "anio": 2003,
+        "genero": "Pop Latino",
+        "duracion": 220
+    },
+    {
+        "titulo": "Torero",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Simplemente...",
+        "anio": 1996,
+        "genero": "Pop Latino",
+        "duracion": 240
+    },
+    {
+        "titulo": "Un Siglo Sin Ti",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Sincero",
+        "anio": 2003,
+        "genero": "Pop Latino",
+        "duracion": 210
+    },
+    {
+        "titulo": "Volver a Nacer",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Sincero",
+        "anio": 2003,
+        "genero": "Pop Latino",
+        "duracion": 220
+    },
+    {
+        "titulo": "Y Tu Te Vas",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "Atado a tu Amor",
+        "anio": 1998,
+        "genero": "Pop Latino",
+        "duracion": 230
+    },
+    {
+        "titulo": "Yo Te Amo",
+        "artista": "Chayanne",
+        "pais": "Puerto Rico",
+        "album": "En Todo Estare",
+        "anio": 2014,
+        "genero": "Pop Latino",
+        "duracion": 205
+    },
+    {
+        "titulo": "Flaca",
+        "artista": "Andres Calamaro",
+        "pais": "Argentina",
+        "album": "Alta suciedad",
+        "anio": 1997,
+        "genero": "Rock",
+        "duracion": 250
+    },
+    {
+        "titulo": "Al Fin Estamos Solos",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Genios Anonimos",
+        "anio": 2008,
+        "genero": "Rock",
+        "duracion": 215
+    },
+    {
+        "titulo": "Cara de Rusa",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Otras Canciones",
+        "anio": 2005,
+        "genero": "Rock",
+        "duracion": 210
+    },
+    {
+        "titulo": "Ella Dice",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Otras Canciones",
+        "anio": 2005,
+        "genero": "Rock",
+        "duracion": 230
+    },
+    {
+        "titulo": "Encima Vino Ella",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Donde el Viento Sopla Fuerte",
+        "anio": 2010,
+        "genero": "Rock",
+        "duracion": 215
+    },
+    {
+        "titulo": "Estados Alterados",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Estados Alterados",
+        "anio": 2013,
+        "genero": "Rock",
+        "duracion": 210
+    },
+    {
+        "titulo": "Fabriciana",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Otras Canciones",
+        "anio": 2005,
+        "genero": "Rock",
+        "duracion": 205
+    },
+    {
+        "titulo": "Genios Anonimos",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Genios Anonimos",
+        "anio": 2008,
+        "genero": "Rock",
+        "duracion": 220
+    },
+    {
+        "titulo": "Las Cosas que No Digo",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Genios Anonimos",
+        "anio": 2008,
+        "genero": "Rock",
+        "duracion": 225
+    },
+    {
+        "titulo": "Puerto Pollensa",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Donde el Viento Sopla Fuerte",
+        "anio": 2010,
+        "genero": "Rock",
+        "duracion": 200
+    },
+    {
+        "titulo": "Rockdrigo",
+        "artista": "Las Pastillas del Abuelo",
+        "pais": "Argentina",
+        "album": "Estados Alterados",
+        "anio": 2013,
+        "genero": "Rock",
+        "duracion": 200
+    },
+    {
+        "titulo": "Divina Anarquia",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Bang Bang",
+        "anio": 1989,
+        "genero": "Rock",
+        "duracion": 230
+    },
+    {
+        "titulo": "El Infierno Esta Encantador Esta Noche",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Gulp!",
+        "anio": 1985,
+        "genero": "Rock",
+        "duracion": 233
+    },
+    {
+        "titulo": "Fusilados por la Cruz Roja",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "La Mosca y la Sopa",
+        "anio": 1994,
+        "genero": "Rock",
+        "duracion": 240
+    },
+    {
+        "titulo": "Ji Ji Ji",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Oktubre",
+        "anio": 1986,
+        "genero": "Rock",
+        "duracion": 208
+    },
+    {
+        "titulo": "Juguetes Perdidos",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Luzbelito",
+        "anio": 1996,
+        "genero": "Rock",
+        "duracion": 292
+    },
+    {
+        "titulo": "Preso en mi Ciudad",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Gulp!",
+        "anio": 1985,
+        "genero": "Rock",
+        "duracion": 300
+    },
+    {
+        "titulo": "Toxi-Taxi",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "La Mosca y la Sopa",
+        "anio": 1994,
+        "genero": "Rock",
+        "duracion": 270
+    },
+    {
+        "titulo": "Un Angel para tu Soledad",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Lobo Suelto, Cordero Atado",
+        "anio": 1993,
+        "genero": "Rock",
+        "duracion": 300
+    },
+    {
+        "titulo": "Vasos y Botellas",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Gulp!",
+        "anio": 1985,
+        "genero": "Rock",
+        "duracion": 260
+    },
+    {
+        "titulo": "Vencedores Vencidos",
+        "artista": "Los Redonditos de Ricota",
+        "pais": "Argentina",
+        "album": "Un Baion Para el Ojo Idiota",
+        "anio": 1991,
+        "genero": "Rock",
+        "duracion": 271
+    },
+    {
+        "titulo": "Nothing Else Matters",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Metallica (Black Album)",
+        "anio": 1991,
+        "genero": "Rock",
+        "duracion": 388
+    },
+    {
+        "titulo": "A Este Lado del Camino",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Dos Colores",
+        "anio": 2016,
+        "genero": "Rock",
+        "duracion": 210
+    },
+    {
+        "titulo": "Buenos Dias Mundo Cruel",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Buena Suerte",
+        "anio": 2011,
+        "genero": "Rock",
+        "duracion": 220
+    },
+    {
+        "titulo": "Chau",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Este Fin de Semana",
+        "anio": 2006,
+        "genero": "Rock",
+        "duracion": 230
+    },
+    {
+        "titulo": "El Camino Mas Largo",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Casi Nada",
+        "anio": 2000,
+        "genero": "Rock",
+        "duracion": 205
+    },
+    {
+        "titulo": "Sabado",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Suenos del Bicentenario",
+        "anio": 2010,
+        "genero": "Rock",
+        "duracion": 200
+    },
+    {
+        "titulo": "Sale el Sol",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "No Te Va Gustar",
+        "anio": 1998,
+        "genero": "Rock",
+        "duracion": 200
+    },
+    {
+        "titulo": "Sanguchito de Miga",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Al Vacio",
+        "anio": 2003,
+        "genero": "Rock",
+        "duracion": 195
+    },
+    {
+        "titulo": "Sin Vos",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Este Fin de Semana",
+        "anio": 2006,
+        "genero": "Rock",
+        "duracion": 215
+    },
+    {
+        "titulo": "Sos Para Mi",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "No Te Va Gustar",
+        "anio": 1998,
+        "genero": "Rock",
+        "duracion": 210
+    },
+    {
+        "titulo": "Ya Es Tarde",
+        "artista": "No Te Va Gustar",
+        "pais": "Uruguay",
+        "album": "Al Vacio",
+        "anio": 2003,
+        "genero": "Rock",
+        "duracion": 215
+    },
+    {
+        "titulo": "Another One Bites the Dust",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "The Game",
+        "anio": 1980,
+        "genero": "Rock",
+        "duracion": 215
+    },
+    {
+        "titulo": "Bohemian Rhapsody",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "A Night at the Opera",
+        "anio": 1975,
+        "genero": "Rock",
+        "duracion": 355
+    },
+    {
+        "titulo": "Don't Stop Me Now",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "Jazz",
+        "anio": 1978,
+        "genero": "Rock",
+        "duracion": 209
+    },
+    {
+        "titulo": "I Want to Break Free",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "The Works",
+        "anio": 1984,
+        "genero": "Rock",
+        "duracion": 220
+    },
+    {
+        "titulo": "Killer Queen",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "Sheer Heart Attack",
+        "anio": 1974,
+        "genero": "Rock",
+        "duracion": 182
+    },
+    {
+        "titulo": "Love of My Life",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "A Night at the Opera",
+        "anio": 1975,
+        "genero": "Rock",
+        "duracion": 219
+    },
+    {
+        "titulo": "Radio Ga Ga",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "The Works",
+        "anio": 1984,
+        "genero": "Rock",
+        "duracion": 345
+    },
+    {
+        "titulo": "Somebody to Love",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "A Day at the Races",
+        "anio": 1976,
+        "genero": "Rock",
+        "duracion": 297
+    },
+    {
+        "titulo": "Under Pressure",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "Hot Space",
+        "anio": 1982,
+        "genero": "Rock",
+        "duracion": 246
+    },
+    {
+        "titulo": "We Are the Champions",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "News of the World",
+        "anio": 1977,
+        "genero": "Rock",
+        "duracion": 179
+    },
+    {
+        "titulo": "We Will Rock You",
+        "artista": "Queen",
+        "pais": "Reino Unido",
+        "album": "News of the World",
+        "anio": 1977,
+        "genero": "Rock",
+        "duracion": 122
+    },
+    {
         "titulo": "De musica ligera",
         "artista": "Soda Stereo",
         "pais": "Argentina",
@@ -18,130 +1305,13 @@
         "duracion": 265
     },
     {
-        "titulo": "Flaca",
-        "artista": "Andres Calamaro",
-        "pais": "Argentina",
-        "album": "Alta suciedad",
-        "anio": 1997,
-        "genero": "Rock",
-        "duracion": 250
-    },
-    {
-        "titulo": "Billie Jean",
-        "artista": "Michael Jackson",
-        "pais": "Estados Unidos",
-        "album": "Thriller",
-        "anio": 1982,
-        "genero": "Pop",
-        "duracion": 294
-    },
-    {
-        "titulo": "Bohemian Rhapsody",
-        "artista": "Queen",
-        "pais": "Reino Unido",
-        "album": "A Night at the Opera",
-        "anio": 1975,
-        "genero": "Rock",
-        "duracion": 355
-    },
-    {
-        "titulo": "Smells Like Teen Spirit",
-        "artista": "Nirvana",
-        "pais": "Estados Unidos",
-        "album": "Nevermind",
-        "anio": 1991,
-        "genero": "Grunge",
-        "duracion": 301
-    },
-    {
-        "titulo": "One More Time",
-        "artista": "Daft Punk",
-        "pais": "Francia",
-        "album": "Discovery",
-        "anio": 2000,
-        "genero": "House",
-        "duracion": 320
-    },
-    {
-        "titulo": "Get Lucky",
-        "artista": "Daft Punk",
-        "pais": "Francia",
-        "album": "Random Access Memories",
-        "anio": 2013,
-        "genero": "House",
-        "duracion": 369
-    },
-    {
-        "titulo": "Take Five",
-        "artista": "Dave Brubeck",
-        "pais": "Estados Unidos",
-        "album": "Time Out",
-        "anio": 1959,
-        "genero": "Jazz",
-        "duracion": 324
-    },
-    {
-        "titulo": "Superstition",
-        "artista": "Stevie Wonder",
-        "pais": "Estados Unidos",
-        "album": "Talking Book",
-        "anio": 1972,
-        "genero": "Funk",
-        "duracion": 245
-    },
-    {
-        "titulo": "Losing My Religion",
-        "artista": "R.E.M.",
-        "pais": "Estados Unidos",
-        "album": "Out of Time",
-        "anio": 1991,
-        "genero": "Alternative Rock",
-        "duracion": 268
-    },
-    {
-        "titulo": "Master of Puppets",
+        "titulo": "Battery",
         "artista": "Metallica",
         "pais": "Estados Unidos",
         "album": "Master of Puppets",
         "anio": 1986,
         "genero": "Thrash Metal",
-        "duracion": 515
-    },
-    {
-        "titulo": "Enter Sandman",
-        "artista": "Metallica",
-        "pais": "Estados Unidos",
-        "album": "Metallica (Black Album)",
-        "anio": 1991,
-        "genero": "Heavy Metal",
-        "duracion": 331
-    },
-    {
-        "titulo": "One",
-        "artista": "Metallica",
-        "pais": "Estados Unidos",
-        "album": "...And Justice for All",
-        "anio": 1988,
-        "genero": "Thrash Metal",
-        "duracion": 447
-    },
-    {
-        "titulo": "Nothing Else Matters",
-        "artista": "Metallica",
-        "pais": "Estados Unidos",
-        "album": "Metallica (Black Album)",
-        "anio": 1991,
-        "genero": "Rock",
-        "duracion": 388
-    },
-    {
-        "titulo": "For Whom the Bell Tolls",
-        "artista": "Metallica",
-        "pais": "Estados Unidos",
-        "album": "Ride the Lightning",
-        "anio": 1984,
-        "genero": "Thrash Metal",
-        "duracion": 310
+        "duracion": 312
     },
     {
         "titulo": "Fade to Black",
@@ -153,13 +1323,31 @@
         "duracion": 417
     },
     {
-        "titulo": "Sad But True",
+        "titulo": "For Whom the Bell Tolls",
         "artista": "Metallica",
         "pais": "Estados Unidos",
-        "album": "Metallica (Black Album)",
-        "anio": 1991,
-        "genero": "Heavy Metal",
-        "duracion": 324
+        "album": "Ride the Lightning",
+        "anio": 1984,
+        "genero": "Thrash Metal",
+        "duracion": 310
+    },
+    {
+        "titulo": "Master of Puppets",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "Master of Puppets",
+        "anio": 1986,
+        "genero": "Thrash Metal",
+        "duracion": 515
+    },
+    {
+        "titulo": "One",
+        "artista": "Metallica",
+        "pais": "Estados Unidos",
+        "album": "...And Justice for All",
+        "anio": 1988,
+        "genero": "Thrash Metal",
+        "duracion": 447
     },
     {
         "titulo": "Seek and Destroy",
@@ -169,23 +1357,5 @@
         "anio": 1983,
         "genero": "Thrash Metal",
         "duracion": 412
-    },
-    {
-        "titulo": "Battery",
-        "artista": "Metallica",
-        "pais": "Estados Unidos",
-        "album": "Master of Puppets",
-        "anio": 1986,
-        "genero": "Thrash Metal",
-        "duracion": 312
-    },
-    {
-        "titulo": "Whiskey in the Jar",
-        "artista": "Metallica",
-        "pais": "Estados Unidos",
-        "album": "Garage Inc.",
-        "anio": 1998,
-        "genero": "Hard Rock",
-        "duracion": 312
     }
 ]
