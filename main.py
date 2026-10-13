@@ -6,6 +6,10 @@ import random
 RUTA_DATOS = os.path.join("datos", "canciones.json")
 
 
+# ---------------------------------------------------------------------------
+# CLASES DEL DOMINIO
+# ---------------------------------------------------------------------------
+
 class Artista:
     def __init__(self, nombre, pais):
         self._nombre = nombre
@@ -95,11 +99,18 @@ class Cancion:
         self._mi_puntaje = valor
 
     def __repr__(self):
+        estrellas = "★" * self._mi_puntaje + "☆" * (5 - self._mi_puntaje)
         return (
             f"{self._titulo} - {self._artista.nombre} ({self._artista.pais}) "
             f"({self._genero.nombre}, {self._album.anio}) "
-            f"[{self._duracion}s]"
+            f"[{self._duracion}s] {estrellas}"
         )
+
+
+# ---------------------------------------------------------------------------
+# ÁRBOL BINARIO DE BÚSQUEDA (BST por título)
+# ---------------------------------------------------------------------------
+
 class NodoArbol:
     def __init__(self, cancion):
         self.cancion = cancion
@@ -126,16 +137,64 @@ def buscar_en_arbol(raiz, titulo):
     if raiz is None:
         return None
 
-    titulo = titulo.casefold()
+    titulo_buscado = titulo.casefold()
     titulo_actual = raiz.cancion.titulo.casefold()
 
-    if titulo == titulo_actual:
+    if titulo_buscado == titulo_actual:
         return raiz.cancion
 
-    if titulo < titulo_actual:
+    if titulo_buscado < titulo_actual:
         return buscar_en_arbol(raiz.izquierda, titulo)
 
     return buscar_en_arbol(raiz.derecha, titulo)
+
+
+def recorrido_inorder(raiz, resultado=None):
+    """Inorder: devuelve canciones ordenadas alfabéticamente por título."""
+    if resultado is None:
+        resultado = []
+    if raiz is not None:
+        recorrido_inorder(raiz.izquierda, resultado)
+        resultado.append(raiz.cancion)
+        recorrido_inorder(raiz.derecha, resultado)
+    return resultado
+
+
+def recorrido_preorder(raiz, resultado=None):
+    """Preorder: raíz → izquierda → derecha."""
+    if resultado is None:
+        resultado = []
+    if raiz is not None:
+        resultado.append(raiz.cancion)
+        recorrido_preorder(raiz.izquierda, resultado)
+        recorrido_preorder(raiz.derecha, resultado)
+    return resultado
+
+
+def recorrido_postorder(raiz, resultado=None):
+    """Postorder: izquierda → derecha → raíz."""
+    if resultado is None:
+        resultado = []
+    if raiz is not None:
+        recorrido_postorder(raiz.izquierda, resultado)
+        recorrido_postorder(raiz.derecha, resultado)
+        resultado.append(raiz.cancion)
+    return resultado
+
+
+def construir_arbol(canciones):
+    """Construye el BST shuffleando primero para evitar degeneración."""
+    shuffled = canciones[:]
+    random.shuffle(shuffled)
+    raiz = None
+    for cancion in shuffled:
+        raiz = insertar_arbol(raiz, cancion)
+    return raiz
+
+
+# ---------------------------------------------------------------------------
+# CARGA Y BÚSQUEDAS
+# ---------------------------------------------------------------------------
 
 def cargar_canciones(ruta):
     with open(ruta, "r", encoding="utf-8") as archivo:
@@ -146,7 +205,6 @@ def cargar_canciones(ruta):
         artista = Artista(dato["artista"], dato["pais"])
         genero = Genero(dato["genero"])
         album = Album(dato["album"], dato["anio"], artista)
-
         cancion = Cancion(
             dato["titulo"],
             artista,
@@ -164,6 +222,7 @@ def listar_canciones(canciones):
 
 
 def buscar_por_titulo(canciones, texto):
+    """Búsqueda parcial (autocompletar) — O(n)."""
     texto = texto.casefold()
     return [c for c in canciones if texto in c.titulo.casefold()]
 
@@ -176,35 +235,13 @@ def buscar_por_artista(canciones, texto):
 def filtrar_por_genero(canciones, genero):
     return [c for c in canciones if c.genero.nombre.casefold() == genero.casefold()]
 
-def generar_canciones_prueba(cantidad):
-    canciones = []
-
-    for i in range(cantidad):
-        artista = Artista("Artista prueba", "Argentina")
-        genero = Genero("Pop")
-        album = Album("Album prueba", 2026, artista)
-
-        cancion = Cancion(
-            f"Cancion {i}",
-            artista,
-            album,
-            genero,
-            180
-        )
-
-        canciones.append(cancion)
-
-    random.shuffle(canciones)
-
-    return canciones
 
 def buscar_secuencial(canciones, titulo):
+    """Búsqueda exacta secuencial — O(n)."""
     titulo = titulo.casefold()
-
     for cancion in canciones:
         if cancion.titulo.casefold() == titulo:
             return cancion
-
     return None
 
 
@@ -214,133 +251,224 @@ def mostrar_resultados(resultados, mensaje_vacio):
             print(cancion)
     else:
         print(mensaje_vacio)
-def experimento_complejidad(canciones):
 
-    
 
-    exper_prueba = [100, 1000, 10000, 100000]
+# ---------------------------------------------------------------------------
+# CALIFICAR Y FAVORITAS
+# ---------------------------------------------------------------------------
+
+def calificar_cancion(canciones):
+    texto = input("Nombre del tema a calificar: ")
+    resultados = buscar_por_titulo(canciones, texto)
+
+    if not resultados:
+        print("No se encontro esa cancion.")
+        return
+
+    if len(resultados) > 1:
+        print("Se encontraron varias canciones:")
+        for i, c in enumerate(resultados):
+            print(f"  {i + 1}. {c.titulo} - {c.artista.nombre}")
+        try:
+            idx = int(input("Elegí el número: ")) - 1
+            cancion = resultados[idx]
+        except (ValueError, IndexError):
+            print("Opción inválida.")
+            return
+    else:
+        cancion = resultados[0]
+
+    try:
+        puntaje = int(input(f"Puntaje para '{cancion.titulo}' (1 a 5): "))
+        if not 1 <= puntaje <= 5:
+            raise ValueError
+        cancion.mi_puntaje = puntaje
+        print(f"Puntaje guardado: {'★' * puntaje}{'☆' * (5 - puntaje)}")
+    except ValueError:
+        print("Ingresá un número entre 1 y 5.")
+
+
+def ver_favoritas(canciones):
+    favoritas = [c for c in canciones if c.mi_puntaje > 0]
+    if not favoritas:
+        print("Todavía no calificaste ninguna cancion.")
+        return
+    favoritas.sort(key=lambda c: c.mi_puntaje, reverse=True)
+    print(f"\n{'Tu top de favoritas':^50}")
+    print("-" * 50)
+    for c in favoritas:
+        print(c)
+
+
+# ---------------------------------------------------------------------------
+# EXPERIMENTO DE COMPLEJIDAD  (bug corregido -La variable del loop pisaba el parametro de la fucion)
+# ---------------------------------------------------------------------------
+
+def generar_canciones_prueba(cantidad):
+    canciones = []
+    for i in range(cantidad):
+        artista = Artista("Artista prueba", "Argentina")
+        genero = Genero("Pop")
+        album = Album("Album prueba", 2026, artista)
+        cancion = Cancion(f"Cancion {i}", artista, album, genero, 180)
+        canciones.append(cancion)
+    random.shuffle(canciones)
+    return canciones
+
+
+def experimento_complejidad():
+    tamanios = [100, 1_000, 10_000, 100_000]
 
     print("\n" + "=" * 70)
     print("EXPERIMENTO DE COMPLEJIDAD")
     print("=" * 70)
-
     print(
         f"{'N ELEMENTOS':<15}"
-        f"{'BÚSQUEDA SECUENCIAL':<25}"
-        f"{'BÚSQUEDA EN ÁRBOL':<25}"
+        f"{'BÚSQUEDA SECUENCIAL (ms)':<28}"
+        f"{'BÚSQUEDA EN ÁRBOL (ms)':<25}"
     )
-
     print("-" * 70)
 
-    for n in exper_prueba:
+    for n in tamanios:
+        # Variable local — no pisa la lista real de canciones
+        muestra = generar_canciones_prueba(n)
 
-        
-        canciones = generar_canciones_prueba(n)
-
-        # Creamos el árbol
         raiz = None
-
-        for cancion in canciones:
+        for cancion in muestra:
             raiz = insertar_arbol(raiz, cancion)
 
-        # Buscamos el último elemento
-        # para forzar un caso de búsqueda largo
-        titulo_objetivo = canciones[-1].titulo
-
-        
-        # BÚSQUEDA SECUENCIAL
-       
-        inicio = time.perf_counter()
-
-        buscar_secuencial(canciones, titulo_objetivo)
-
-        fin = time.perf_counter()
-
-        tiempo_secuencial = (fin - inicio) * 1000
-
-        
-        # BÚSQUEDA EN ÁRBOL
-        
+        # Forzamos peor caso: buscamos el último elemento de la lista
+        titulo_objetivo = muestra[-1].titulo
 
         inicio = time.perf_counter()
+        buscar_secuencial(muestra, titulo_objetivo)
+        tiempo_secuencial = (time.perf_counter() - inicio) * 1000
 
+        inicio = time.perf_counter()
         buscar_en_arbol(raiz, titulo_objetivo)
-
-        fin = time.perf_counter()
-
-        tiempo_arbol = (fin - inicio) * 1000
-
-        # Mostrar resultados
+        tiempo_arbol = (time.perf_counter() - inicio) * 1000
 
         print(
             f"{n:<15}"
-            f"{tiempo_secuencial:<25.6f}"
+            f"{tiempo_secuencial:<28.6f}"
             f"{tiempo_arbol:<25.6f}"
         )
 
-    print("\nComplejidad teórica:")
-    print("Búsqueda secuencial: O(n)")
-    print("Búsqueda en árbol:   O(log n) promedio")
+    print("""
+ANÁLISIS DE COMPLEJIDAD
+=======================
+Búsqueda secuencial:
+  Mejor caso:  Ω(1)  — el elemento está primero
+  Promedio:    Θ(n)  — recorre n/2 en media
+  Peor caso:   O(n)  — no está o está al final
 
-def menu(canciones):
+Búsqueda en árbol BST:
+  Mejor caso:  Ω(1)  — la raíz es el elemento
+  Promedio:    Θ(log n) — árbol balanceado
+  Peor caso:   O(n)  — árbol degenerado (insertado en orden)
+
+CONCLUSIÓN
+==========
+El árbol es notablemente más rápido a partir de ~1.000 elementos.
+La búsqueda secuencial sigue siendo necesaria para búsquedas
+parciales (autocompletar). Para evitar degeneración del BST,
+las canciones se insertan en orden aleatorio (shuffle previo).
+""")
+
+
+# ---------------------------------------------------------------------------
+# MENÚ
+# ---------------------------------------------------------------------------
+
+def menu(canciones, raiz):
     while True:
         print("\n" + "-" * 50)
         print("MusicBox".center(50))
         print("-" * 50)
-        print("1. Lista de Temas")
-        print("2. Buscar canciones por titulo")
-        print("3. Buscar canciones por artista")
-        print("4. Explorar por genero")
-        print("5. Ver mi Top de favoritas")
-        print("6. Ver canciones relacionadas")
-        print("7. Calificar cancion")
-        print("8. Experimento de complejidad")
-        print("0. Salir")
+        print("1.  Lista de temas")
+        print("2.  Buscar por título (parcial)")
+        print("3.  Buscar por artista")
+        print("4.  Explorar por género")
+        print("5.  Ver mis favoritas")
+        print("6.  Calificar canción")
+        print("7.  Buscar título exacto (árbol BST)")
+        print("8.  Recorrer árbol binario")
+        print("9.  Experimento de complejidad")
+        print("0.  Salir")
 
-        opcion = input("Elegi una opcion: ")
+        opcion = input("\nElegí una opción: ").strip()
 
         if opcion == "1":
-            resultados = listar_canciones(canciones)
-            mostrar_resultados(resultados, "El catalogo esta vacio.")
+            mostrar_resultados(listar_canciones(canciones), "El catálogo está vacío.")
 
         elif opcion == "2":
-            texto = input("Que tema buscas? ")
-            resultados = buscar_por_titulo(canciones, texto)
-            mostrar_resultados(resultados, "No se encontro ese titulo.")
+            texto = input("¿Qué tema buscás? ")
+            mostrar_resultados(buscar_por_titulo(canciones, texto), "No se encontró ese título.")
 
         elif opcion == "3":
-            texto = input("Que artista o banda buscas? ")
-            resultados = buscar_por_artista(canciones, texto)
-            mostrar_resultados(resultados, "No se encontro ese artista.")
+            texto = input("¿Qué artista o banda buscás? ")
+            mostrar_resultados(buscar_por_artista(canciones, texto), "No se encontró ese artista.")
 
         elif opcion == "4":
-            genero = input("Que genero queres explorar? ")
-            resultados = filtrar_por_genero(canciones, genero)
-            mostrar_resultados(resultados, "No hay canciones de ese genero en el catalogo.")
+            genero = input("¿Qué género querés explorar? ")
+            mostrar_resultados(
+                filtrar_por_genero(canciones, genero),
+                "No hay canciones de ese género en el catálogo."
+            )
 
         elif opcion == "5":
-            print("Funcion de favoritas.")
+            ver_favoritas(canciones)
 
         elif opcion == "6":
-            print("Funcion de canciones relacionadas.")
+            calificar_cancion(canciones)
 
         elif opcion == "7":
-            print("Funcion de calificacion.")
+            titulo = input("Título exacto: ")
+            resultado = buscar_en_arbol(raiz, titulo)
+            if resultado:
+                print("Canción encontrada:")
+                print(resultado)
+            else:
+                print("No se encontró esa canción.")
+
         elif opcion == "8":
-         experimento_complejidad(canciones)
+            print("\n1. Inorder  (alfabético)")
+            print("2. Preorder (raíz primero)")
+            print("3. Postorder (raíz último)")
+            recorrido = input("Elegí un recorrido: ").strip()
+
+            if recorrido == "1":
+                mostrar_resultados(recorrido_inorder(raiz), "Árbol vacío.")
+            elif recorrido == "2":
+                mostrar_resultados(recorrido_preorder(raiz), "Árbol vacío.")
+            elif recorrido == "3":
+                mostrar_resultados(recorrido_postorder(raiz), "Árbol vacío.")
+            else:
+                print("Opción inválida.")
+
+        elif opcion == "9":
+            experimento_complejidad()
 
         elif opcion == "0":
             print("Gracias por usar MusicBox.")
             break
 
         else:
-            print("Opcion invalida.")
+            print("Opción inválida.")
 
+
+# ---------------------------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------------------------
 
 def main():
     canciones = cargar_canciones(RUTA_DATOS)
     print(f"Canciones cargadas: {len(canciones)}")
-    menu(canciones)
+
+    # Construye el BST con shuffle para evitar degeneración
+    raiz = construir_arbol(canciones)
+
+    menu(canciones, raiz)
 
 
 if __name__ == "__main__":
