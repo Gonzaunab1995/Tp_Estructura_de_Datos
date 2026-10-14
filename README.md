@@ -2,148 +2,170 @@
 
 Sistema de recomendaciones musicales — Trabajo Práctico Integrador de Estructuras de Datos.
 
-## Descripción
+# Descripción
 
 MusicBox permite cargar un catálogo de canciones, listarlas, buscarlas por
-título o artista, filtrarlas por género, calificarlas y ver un ranking de favoritas,
-todo desde la terminal. Es un proyecto que va incorporando árboles, heaps y grafos en
+título o artista, y filtrarlas por género, a través de una interfaz de
+terminal. Es un proyecto que va incorporando árboles, heaps y grafos en
 sucesivas entregas.
 
-## Estructura del repositorio
+# Estructura del repositorio
 
 ```
 musicbox/
-├── main.py              # clases del dominio + árbol BST + interfaz de terminal
+├── main.py              # clases del dominio + árboles (BST / AVL) + interfaz de terminal
 ├── datos/
 │   └── canciones.json   # catálogo de canciones
 └── README.md
 ```
 
-## Requisitos
+# Requisitos
 
 - Python 3.8 o superior (no requiere instalar librerías externas).
 
-## Cómo ejecutar
+# Cómo ejecutar
 
 1. Cloná o descargá este repositorio.
-2. Parate en la carpeta `musicbox/` (la que contiene `main.py`).
+2. Parate en la carpeta musicbox/ (la que contiene main.py).
 3. Ejecutá:
 
-```
-python3 main.py
-```
+   ```
+   python3 main.py
+   ```
 
 4. Vas a ver el menú principal:
 
-```
---------------------------------------------------
-                    MusicBox
---------------------------------------------------
-1.  Lista de temas
-2.  Buscar por título (parcial)
-3.  Buscar por artista
-4.  Explorar por género
-5.  Ver mis favoritas
-6.  Calificar canción
-7.  Buscar título exacto (árbol BST)
-8.  Recorrer árbol binario
-9.  Experimento de complejidad
-0.  Salir
-```
+   ```
+   === MUSICBOX ===
+   1. Lista de Temas
+   2. Buscar canciones por titulo
+   3. Buscar canciones por artista
+   4. Explorar por genero
+   5. Ver mi Top de favoritas
+   6. Ver canciones relacionadas
+   7. Calificar cancion
+   8. Buscar titulo exacto con arbol
+   9. Recorrer arbol binario
+   10. Experimento de complejidad
+   11. Comparar BST común vs. AVL
+   0. Salir
+   ```
 
-## Funcionalidades actuales
+# Funcionalidades actuales
 
-1. Lista de temas: muestra el catálogo completo con título, artista, género, año y duración.
-2. Buscar por título (parcial): buscás escribiendo cualquier parte del nombre, devuelve todas las coincidencias.
-3. Buscar por artista: mostrá todos los temas de un artista o banda.
-4. Explorar por género: filtrá el catálogo por género musical.
-5. Ver mis favoritas: muestra las canciones que calificaste, ordenadas de mayor a menor puntaje.
-6. Calificar canción: le das un puntaje del 1 al 5 a cualquier tema del catálogo. Si hay varias coincidencias te deja elegir cuál.
-7. Buscar título exacto (árbol BST): búsqueda exacta usando el árbol binario, más rápida que la secuencial para catálogos grandes.
-8. Recorrer árbol binario: recorre el árbol en inorder (alfabético), preorder o postorder.
-9. Experimento de complejidad: genera catálogos de prueba y compara los tiempos de búsqueda secuencial vs árbol BST.
+1. Lista de Temas: muestra el catálogo completo, sin filtrar (cumple la operación "Listar").
+2. Buscar canciones por título: te pide el nombre de tu tema preferido o el que buscas en el momento.
+3. Buscar canciones por artista: te pide tu artista y muestra todos sus temas correspondientes.
+4. Explorar por género: muestra todas las canciones de un género.
+5. Ver mi Top de favoritas: pendiente.
+6. Ver canciones relacionadas: pendiente.
+7. Calificar canción: pendiente.
+8. Buscar título exacto con árbol: busca una canción por título exacto en el árbol AVL.
+9. Recorrer árbol binario: muestra el árbol en inorder, preorder o postorder.
+10. Experimento de complejidad: compara búsqueda secuencial vs búsqueda en árbol con distintos tamaños de entrada (ver sección de abajo).
+11. Comparar BST común vs. AVL: experimento de desbalance con títulos insertados en orden alfabético (ver sección TP4).
 
-## Modelo de clases
+# Modelo de clases
 
 - Artista: nombre y país.
 - Genero: nombre del género musical.
-- Album: título, año y el Artista al que pertenece.
-- Cancion: título, Artista, Album, Genero, duración en segundos y puntaje personal.
-- NodoArbol: nodo del árbol binario de búsqueda (BST). Guarda una Cancion y referencias a los nodos izquierdo y derecho. El árbol se ordena por título para hacer búsquedas exactas rápidas.
+- Album: título, año y el `Artista` al que pertenece.
+- Cancion: título, Artista, Album, `Genero` y duración en segundos.
+- NodoArbol: nodo de un árbol binario de búsqueda que almacena una Cancion, con referencias a izquierda y derecha. Se usa para indexar el catálogo por título, tanto en el BST común como en el AVL.
 
-## Árbol binario de búsqueda (TP3)
+# Búsqueda por título: dos estrategias
 
-La clave de ordenamiento elegida es el título, porque es la operación de búsqueda más
-frecuente del sistema. Ordenar por año o rating también sería válido, pero no resolvería
-la necesidad principal.
+Operación crítica: buscar canción por título. Implementada de dos formas
+sobre el mismo catálogo:
 
-El árbol se construye al iniciar el programa con construir_arbol(), que primero
-mezcla las canciones aleatoriamente antes de insertarlas. Esto evita que el árbol
-se degenere en una lista cuando los datos vienen ordenados del JSON.
+- buscar_por_titulo: recorrido secuencial, coincidencia parcial (sirve para
+  autocompletar).
+- buscar_en_arbol + insertar_arbol: árbol ordenado por título, coincidencia
+  exacta. Desde el TP4, `insertar_arbol` es un AVL que se rebalancea solo.
 
-### Funciones del árbol
+# Análisis de complejidad
 
-- insertar_arbol(raiz, cancion): inserción recursiva por título.
-- buscar_en_arbol(raiz, titulo): búsqueda exacta en O(log n) promedio.
-- recorrido_inorder(raiz): devuelve las canciones ordenadas alfabéticamente.
-- recorrido_preorder(raiz): raíz → izquierda → derecha.
-- recorrido_postorder(raiz): izquierda → derecha → raíz.
+| Estrategia                | Mejor caso | Promedio | Peor caso |
+|---------------------------|------------|----------|-----------|
+| Secuencial                | Θ(n)       | Θ(n)     | Θ(n)      |
+| Árbol (BST no balanceado) | Ω(1)       | Θ(log n) | O(n)      |
+| Árbol AVL                 | Ω(1)       | Θ(log n) | O(log n)  |
 
-## Búsqueda por título: dos estrategias
+La secuencial siempre recorre las canciones (no corta, puede haber varias
+coincidencias parciales), por eso mejor y peor caso coinciden en Θ(n). El
+árbol descarta la mitad del subárbol en cada paso → Θ(log n) promedio, pero
+como el BST común (`insertar_bst`) no rebalancea, un árbol degenerado (títulos
+insertados ya ordenados) cae a O(n). El AVL evita ese caso con rotaciones y
+garantiza O(log n) también en el peor caso.
 
-Operación crítica: buscar canción por título exacto. Implementada de dos formas:
+# Experimento y resultados
 
-- buscar_por_titulo: recorrido secuencial, coincidencia parcial (sirve para autocompletar).
-- buscar_en_arbol: BST ordenado por título, coincidencia exacta, mucho más rápido en catálogos grandes.
+Se corre con la opción 10 del menú ("experimento_complejidad"), que genera
+catálogos de prueba de distinto tamaño y mide el tiempo de cada estrategia.
 
-Ambas conviven porque cubren necesidades distintas: la secuencial para autocompletar,
-el árbol para búsqueda directa.
+| N elementos | Secuencial  | Árbol     |
+|-------------|-------------|-----------|
+| 100         | 0.0084 ms   | 0.0054 ms |
+| 1.000       | 0.0649 ms   | 0.0058 ms |
+| 10.000      | 0.7615 ms   | 0.0102 ms |
 
-## Análisis de complejidad
+A mayor cantidad de elementos ,el Árbol va ser mas rapido ; la secuencial crece
+linealmente con "N" cantidad de elmentos, el árbol prácticamente no.
 
-| Estrategia                | Mejor caso | Promedio   | Peor caso |
-|---------------------------|------------|------------|-----------|
-| Secuencial                | Ω(1)       | Θ(n)       | O(n)      |
-| Árbol (BST no balanceado) | Ω(1)       | Θ(log n)   | O(n)      |
+# Conclusión técnica
 
-La secuencial en la práctica siempre recorre todo el catálogo cuando se usa para
-búsqueda exacta, por eso se comporta como Θ(n). El árbol descarta la mitad del
-subárbol en cada paso, lo que lo lleva a Θ(log n) en promedio. El peor caso de
-ambos es O(n): en la secuencial cuando el elemento no existe, en el árbol cuando
-está degenerado (se resuelve con el shuffle al construirlo).
+El árbol te conviene cuando tenés muchas canciones y buscás seguido: tarda un poco más en armarse, pero después cada búsqueda es mucho más rápida, así que vale la pena. La secuencial no se puede sacar del medio porque es la única que permite autocompletar (buscar por coincidencia parcial), cosa que el árbol no hace. Y si el catálogo es chico o cambia todo el tiempo, no tiene sentido complicarse con el árbol: como un BST común no se rebalancea, se puede terminar degenerando y rindiendo igual (o peor) que la secuencial. Eso se resuelve con el AVL implementado en el TP4 (ver sección siguiente).
 
-## Experimento y resultados
+# TP4: El árbol también puede enfermarse
 
-Se corre con la opción 9 del menú. Genera catálogos de prueba de distinto tamaño,
-fuerza el peor caso buscando siempre el último elemento, y mide el tiempo de cada
-estrategia.
+## Objetivo
 
-| N elementos | Secuencial  | Árbol      |
-|-------------|-------------|------------|
-| 100         | 0.0084 ms   | 0.0054 ms  |
-| 1.000       | 0.0649 ms   | 0.0058 ms  |
-| 10.000      | 0.7615 ms   | 0.0102 ms  |
-| 100.000     | 10.7458 ms  | 0.0152 ms  |
+Investigar qué ocurre cuando un árbol binario de búsqueda (BST) pierde el equilibrio, implementar un árbol AVL que lo evite y comparar ambos en casos de desbalance.
 
-A mayor cantidad de elementos el árbol es notablemente más rápido. La secuencial
-crece linealmente con N, el árbol prácticamente no.
+## Implementación
 
-## Conclusión técnica
+- **BST común** (`insertar_bst`): inserta cada título según su orden alfabético (sin distinguir mayúsculas) y no realiza ningún reequilibrio.
+- **AVL** (`insertar_arbol`): después de cada inserción calcula el factor de equilibrio (altura izquierda − altura derecha) de cada nodo del camino. Si queda fuera del rango [-1, 1], aplica la rotación correspondiente:
+  - **Izquierda-izquierda:** rotación simple a la derecha.
+  - **Derecha-derecha:** rotación simple a la izquierda.
+  - **Izquierda-derecha:** rotación doble (izquierda y luego derecha).
+  - **Derecha-izquierda:** rotación doble (derecha y luego izquierda).
 
-El árbol vale la pena cuando el catálogo es grande y se busca seguido por título exacto:
-tarda un poco más en armarse al inicio, pero después cada búsqueda es mucho más rápida.
-La búsqueda secuencial no se puede eliminar porque es la única que permite autocompletar
-(coincidencia parcial), cosa que el árbol no hace.
+## Experimento de desbalance
 
-Si el catálogo es chico o cambia todo el tiempo, no tiene sentido complicarse con el árbol.
-Como el BST no se rebalancea, si los datos se insertan en orden puede degenerarse y rendir
-igual que la secuencial — eso se resuelve mezclando las canciones antes de insertar, que es
-lo que hace construir_arbol(). A futuro se podría mejorar con un AVL para garantizar el
-balance sin depender del orden de inserción.
+Se generaron conjuntos de 100, 500 y 900 canciones sintéticas (se usaron datos generados para poder escalar la cantidad de elementos). Los títulos se insertaron en **orden alfabético**, que es el peor caso para un BST común. Luego se buscó el último título insertado, que es el que más comparaciones exige en el BST. Se ejecuta desde la opción 11 del menú.
 
-## Estado del proyecto
+| Canciones | Altura BST | Altura AVL | Comparaciones BST | Comparaciones AVL |
+|-----------|------------|------------|-------------------|-------------------|
+| 100       | 100        | 7          | 100               | 7                 |
+| 500       | 500        | 9          | 500               | 9                 |
+| 900       | 900        | 10         | 900               | 10                |
 
-- TP1: objetos y clases (Artista, Genero, Album, Cancion).
-- TP2: análisis de complejidad, comparación de estrategias de búsqueda.
-- TP3: árbol binario de búsqueda, recorridos, integración al menú, calificación y favoritas. (ok)
-- Próxima etapa:  código AVL, experimentos de desbalance, comparación, conclusión técnica.
+Para 900 canciones la altura del AVL fue 10, lo esperado según la teoría, ya que log₂(900) ≈ 9,8.
+
+## Limitaciones
+
+- Solo se probó el orden ascendente, que es el peor caso. Con inserción aleatoria, el BST común queda mucho menos desbalanceado.
+- La inserción del AVL es más costosa que la búsqueda, porque el factor de equilibrio se calcula recorriendo los subárboles. Una mejora posible es guardar la altura en cada nodo.
+- Los títulos duplicados no se insertan en el árbol.
+
+
+## Resultados del experimento: BST común vs. AVL
+
+Se comparó un árbol binario de búsqueda común (BST) con un árbol AVL utilizando conjuntos de 100, 500 y 900 canciones cuyos títulos se insertaron en orden alfabético.
+
+Los resultados mostraron que el BST común se desbalanceó por completo: su altura coincidió con la cantidad de canciones. Para 900 canciones, la búsqueda del título seleccionado necesitó 900 comparaciones.
+
+En cambio, el AVL mantuvo una altura reducida gracias a las rotaciones de equilibrio. Para las mismas 900 canciones, la búsqueda necesitó solamente 10 comparaciones.
+
+Esto demuestra que el orden de inserción puede afectar considerablemente el rendimiento de un BST común. En el peor caso, la búsqueda en un BST desbalanceado tiene complejidad O(n), mientras que en un AVL la búsqueda tiene complejidad O(log n), debido a que el árbol mantiene una altura logarítmica.
+
+En conclusión, el equilibrio es fundamental para conservar la eficiencia de las búsquedas cuando aumenta la cantidad de elementos. El AVL evita que el árbol se degrade hasta comportarse como una lista enlazada.
+
+# Estado del proyecto
+
+TP1 (Objetos y clases)
+TP2 (análisis de complejidad)
+TP3 (árbol binario de búsqueda) 
+TP4 (AVL y comparación contra BST común) completos.
+A continuacion tp5...
