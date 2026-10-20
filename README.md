@@ -1,6 +1,12 @@
-# MusicBox
+# MusicBox — versión 3.0
 
 Sistema de recomendaciones musicales — Trabajo Práctico Integrador de Estructuras de Datos.
+
+| Versión | Contenido | Trabajos prácticos |
+|---------|-----------|--------------------|
+| 1.0 | Objetos, clases y análisis de complejidad | TP1, TP2 |
+| 2.0 | Árbol binario de búsqueda y AVL | TP3, TP4 |
+| **3.0** | **Árbol general (n-ario) de categorías integrado a la terminal** | **TP5** |
 
 # Descripción
 
@@ -13,7 +19,7 @@ sucesivas entregas.
 
 ```
 musicbox/
-├── main.py              # clases del dominio + árboles (BST / AVL) + interfaz de terminal
+├── main.py              # clases del dominio + árboles (BST / AVL / general) + interfaz de terminal
 ├── datos/
 │   └── canciones.json   # catálogo de canciones
 └── README.md
@@ -36,11 +42,11 @@ musicbox/
 4. Vas a ver el menú principal:
 
    ```
-   === MUSICBOX ===
+   MusicBox v3.0
    1. Lista de Temas
    2. Buscar canciones por titulo
    3. Buscar canciones por artista
-   4. Explorar por genero
+   4. Explorar por genero o categorias
    5. Ver mi Top de favoritas
    6. Ver canciones relacionadas
    7. Calificar cancion
@@ -56,7 +62,7 @@ musicbox/
 1. Lista de Temas: muestra el catálogo completo, sin filtrar (cumple la operación "Listar").
 2. Buscar canciones por título: te pide el nombre de tu tema preferido o el que buscas en el momento.
 3. Buscar canciones por artista: te pide tu artista y muestra todos sus temas correspondientes.
-4. Explorar por género: muestra todas las canciones de un género.
+4. Explorar por género o categorías: abre un submenú con dos opciones: (1) listar las canciones de un género y (2) explorar el árbol de categorías (árbol general): ver el árbol, buscar una categoría y ver sus canciones, y mostrar los recorridos en preorden, postorden y por niveles (ver sección TP5).
 5. Ver mi Top de favoritas: pendiente.
 6. Ver canciones relacionadas: pendiente.
 7. Calificar canción: pendiente.
@@ -72,6 +78,7 @@ musicbox/
 - Album: título, año y el `Artista` al que pertenece.
 - Cancion: título, Artista, Album, `Genero` y duración en segundos.
 - NodoArbol: nodo de un árbol binario de búsqueda que almacena una Cancion, con referencias a izquierda y derecha. Se usa para indexar el catálogo por título, tanto en el BST común como en el AVL.
+- NodoGeneral: nodo de un árbol general (n-ario) con un nombre, una lista de hijos de cualquier tamaño y los géneros del catálogo que pertenecen a esa categoría. Se usa para la jerarquía de categorías del TP5.
 
 # Búsqueda por título: dos estrategias
 
@@ -162,10 +169,124 @@ Esto demuestra que el orden de inserción puede afectar considerablemente el ren
 
 En conclusión, el equilibrio es fundamental para conservar la eficiencia de las búsquedas cuando aumenta la cantidad de elementos. El AVL evita que el árbol se degrade hasta comportarse como una lista enlazada.
 
+# TP5: Árboles generales (n-arios)
+
+## Objetivo
+
+Representar una jerarquía natural del dominio con un árbol general, donde cada nodo puede tener cualquier cantidad de hijos, e integrarla a la interfaz de terminal.
+
+## Jerarquía elegida
+
+Los géneros musicales se organizan por familias. La jerarquía se construyó con los **géneros reales del catálogo** (`canciones.json`), así que cada categoría final corresponde a canciones concretas:
+
+```
+Música
+├── Rock
+│   ├── Alternative Rock
+│   ├── Funk Rock
+│   ├── Grunge
+│   └── Hard Rock
+├── Metal
+│   ├── Heavy Metal
+│   ├── Thrash Metal
+│   ├── Nu Metal
+│   └── Industrial Metal
+├── Pop
+│   └── Pop Latino
+├── Música popular argentina
+│   ├── Folclore
+│   ├── Chacarera
+│   ├── Cuarteto
+│   └── Cumbia Villera
+├── Electrónica
+│   ├── Dubstep
+│   └── House
+└── Jazz y Funk
+    ├── Jazz
+    └── Funk
+```
+
+Son 24 categorías en 3 niveles. Las categorías intermedias (por ejemplo Metal) no tienen canciones propias: sus canciones son las de todas sus subcategorías. Rock y Pop sí tienen canciones propias, porque "Rock" y "Pop" también son géneros del catálogo. Si el catálogo trae un género que no está en la jerarquía, el programa lo cuelga automáticamente de una categoría **Otros**, así ninguna canción queda afuera.
+
+## Implementación
+
+- **`NodoGeneral`**: nodo con `nombre`, lista `hijos` y `generos` (los géneros del catálogo que pertenecen directamente a la categoría). Incluye `agregar_hijo`.
+- **`crear_arbol_categorias`**: arma la jerarquía.
+- **`agregar_generos_faltantes`**: cuelga de "Otros" los géneros del catálogo que no figuran en el árbol.
+- **`canciones_de_categoria`**: devuelve las canciones de una categoría y de todos sus descendientes.
+
+## Búsquedas
+
+- **`buscar_categoria(nodo, nombre)`**: búsqueda en profundidad por nombre en cualquier nivel. Ignora mayúsculas y acentos (buscar "musica" encuentra "Música").
+- **`camino_a_categoria(nodo, nombre)`**: devuelve la ruta desde la raíz, por ejemplo `Música > Metal > Thrash Metal`.
+
+## Recorridos
+
+| Recorrido | Función | Orden |
+|-----------|---------|-------|
+| Preorden | `recorrido_preorden_categorias` | Primero el nodo y después sus hijos (de arriba hacia abajo). |
+| Postorden | `recorrido_postorden_categorias` | Primero los hijos y después el nodo (de abajo hacia arriba). |
+| Por niveles (anchura) | `recorrido_por_niveles_categorias` | Nivel por nivel, usando una cola (`deque`). |
+
+Además, `mostrar_categorias` imprime el árbol indentado (es un preorden con sangría).
+
+Ejemplos de salida con el catálogo del proyecto:
+
+**Por niveles**
+```
+Nivel 0: Música
+Nivel 1: Rock, Metal, Pop, Música popular argentina, Electrónica, Jazz y Funk
+Nivel 2: Alternative Rock, Funk Rock, Grunge, Hard Rock, Heavy Metal, Thrash Metal, Nu Metal, Industrial Metal, Pop Latino, Folclore, Chacarera, Cuarteto, Cumbia Villera, Dubstep, House, Jazz, Funk
+```
+
+**Preorden**
+```
+Música -> Rock -> Alternative Rock -> Funk Rock -> Grunge -> Hard Rock -> Metal -> Heavy Metal -> Thrash Metal -> Nu Metal -> Industrial Metal -> Pop -> Pop Latino -> ...
+```
+
+**Postorden**
+```
+Alternative Rock -> Funk Rock -> Grunge -> Hard Rock -> Rock -> Heavy Metal -> Thrash Metal -> Nu Metal -> Industrial Metal -> Metal -> Pop Latino -> Pop -> ...
+```
+
+**Búsqueda de una categoría** (opción 4 → 2 → 2, buscando "thrash metal")
+```
+Ruta: Música > Metal > Thrash Metal
+Subcategorias: (ninguna, es una categoria final)
+Canciones en esta categoria: 6
+  Battery - Metallica (Estados Unidos) (Thrash Metal, 1986) [312s]
+  ...
+```
+
+## Integración en la terminal
+
+La opción **4. Explorar por género o categorías** abre un submenú. La entrada **2. Explorar arbol de categorias** abre el explorador del árbol general:
+
+```
+1. Explorar canciones por genero
+2. Explorar arbol de categorias
+```
+
+```
+--- Explorar categorias ---
+1. Ver el arbol completo
+2. Buscar una categoria
+3. Recorridos del arbol
+0. Volver
+```
+
+Al buscar una categoría se muestran su ruta, sus subcategorías y sus canciones (las primeras 10 y la cantidad restante). Buscar "Música" muestra las 151 canciones del catálogo, ya que incluye todas las ramas. El árbol se construye una sola vez al iniciar el programa, junto con el AVL.
+
+## Complejidad
+
+Con `n` categorías, la búsqueda y todos los recorridos son **O(n)**: en el peor caso visitan cada nodo una vez. Se justifica porque la jerarquía es chica y no está ordenada, a diferencia del AVL de títulos, donde el orden permite descartar mitades.
+
+## Limitaciones
+
+- La jerarquía está escrita en el código (`crear_arbol_categorias`). Agregar una familia nueva requiere modificarlo, aunque los géneros nuevos del catálogo igual aparecen bajo "Otros".
+- La búsqueda de categorías es por nombre completo, no por coincidencia parcial.
+
 # Estado del proyecto
 
-TP1 (Objetos y clases)
-TP2 (análisis de complejidad)
-TP3 (árbol binario de búsqueda) 
-TP4 (AVL y comparación contra BST común) completos.
-A continuacion tp5...
+TP1 (Objetos y clases), TP2 (análisis de complejidad), TP3 (árbol binario de búsqueda), TP4 (AVL y comparación contra BST común) y TP5 (árbol general de categorías) completos. Versión actual: **3.0**.
+Tp6 a continuar....

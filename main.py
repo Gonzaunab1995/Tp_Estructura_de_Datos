@@ -2,7 +2,10 @@ import json
 import os
 import time
 import random
+import unicodedata
+from collections import deque
 
+VERSION = "3.0"
 RUTA_DATOS = os.path.join("datos", "canciones.json")
 
 
@@ -108,6 +111,24 @@ class NodoArbol:
         self.cancion = cancion
         self.izquierda = None
         self.derecha = None
+
+
+class NodoGeneral:
+    #Nodo de un arbol general (n-ario): cualquier cantidad de hijos.
+
+    #generos son los generos del catalogo que pertenecen directamente a
+    #esta categoria. Si no se indica, se usa el propio nombre.#
+    
+
+    def __init__(self, nombre, generos=None):
+        self.nombre = nombre
+        self.hijos = []
+        self.generos = generos if generos is not None else [nombre]
+
+    def agregar_hijo(self, hijo):
+        self.hijos.append(hijo)
+        return hijo
+
 
 
 def insertar_arbol(raiz, cancion):
@@ -520,16 +541,280 @@ def experimento_complejidad(canciones):
     print("Busqueda secuencial: O(n)")
     print("Busqueda AVL: O(log n)")
 
+def crear_arbol_categorias():
+    #Jerarquia de la musica construida con los generos del catalogo.
+    raiz = NodoGeneral("Música", generos=[])
 
-def menu(canciones, raiz):
+    rock = raiz.agregar_hijo(NodoGeneral("Rock"))
+    rock.agregar_hijo(NodoGeneral("Alternative Rock"))
+    rock.agregar_hijo(NodoGeneral("Funk Rock"))
+    rock.agregar_hijo(NodoGeneral("Grunge"))
+    rock.agregar_hijo(NodoGeneral("Hard Rock"))
+
+    metal = raiz.agregar_hijo(NodoGeneral("Metal", generos=[]))
+    metal.agregar_hijo(NodoGeneral("Heavy Metal"))
+    metal.agregar_hijo(NodoGeneral("Thrash Metal"))
+    metal.agregar_hijo(NodoGeneral("Nu Metal"))
+    metal.agregar_hijo(NodoGeneral("Industrial Metal"))
+
+    pop = raiz.agregar_hijo(NodoGeneral("Pop"))
+    pop.agregar_hijo(NodoGeneral("Pop Latino"))
+
+    argentina = raiz.agregar_hijo(
+        NodoGeneral("Música popular argentina", generos=[])
+    )
+    argentina.agregar_hijo(NodoGeneral("Folclore"))
+    argentina.agregar_hijo(NodoGeneral("Chacarera"))
+    argentina.agregar_hijo(NodoGeneral("Cuarteto"))
+    argentina.agregar_hijo(NodoGeneral("Cumbia Villera"))
+
+    electronica = raiz.agregar_hijo(
+        NodoGeneral("Electrónica", generos=[])
+    )
+    electronica.agregar_hijo(NodoGeneral("Dubstep"))
+    electronica.agregar_hijo(NodoGeneral("House"))
+
+    jazz_funk = raiz.agregar_hijo(NodoGeneral("Jazz y Funk", generos=[]))
+    jazz_funk.agregar_hijo(NodoGeneral("Jazz"))
+    jazz_funk.agregar_hijo(NodoGeneral("Funk"))
+
+    return raiz
+
+
+def normalizar(texto):
+    #Minusculas y sin acentos, para comparar nombres de manera mas sencilla
+    texto = unicodedata.normalize("NFD", texto.casefold())
+    return "".join(c for c in texto if unicodedata.category(c) != "Mn")
+
+
+def generos_de_categoria(nodo):
+    #Generos del catalogo que pertenecen a la categoria y sus descendientes.
+    generos = list(nodo.generos)
+
+    for hijo in nodo.hijos:
+        generos.extend(generos_de_categoria(hijo))
+
+    return generos
+
+
+def agregar_generos_faltantes(raiz, canciones):
+    #Cuelga de 'Otros' los generos del catalogo que no estan en el arbol.
+    conocidos = {normalizar(g) for g in generos_de_categoria(raiz)}
+    faltantes = []
+
+    for cancion in canciones:
+        genero = cancion.genero.nombre
+
+        if normalizar(genero) not in conocidos and genero not in faltantes:
+            faltantes.append(genero)
+
+    if faltantes:
+        otros = raiz.agregar_hijo(NodoGeneral("Otros", generos=[]))
+
+        for genero in faltantes:
+            otros.agregar_hijo(NodoGeneral(genero))
+
+
+def canciones_de_categoria(nodo, canciones):
+    #Canciones cuyo genero pertenece a la categoria o a sus subcategorias.
+    generos = {normalizar(g) for g in generos_de_categoria(nodo)}
+
+    return [
+        c for c in canciones
+        if normalizar(c.genero.nombre) in generos
+    ]
+
+
+def mostrar_categorias(nodo, nivel=0):
+    #Muestra el arbol indentado (recorrido en preorden).
+    if nodo is not None:
+        print("  " * nivel + nodo.nombre)
+
+        for hijo in nodo.hijos:
+            mostrar_categorias(hijo, nivel + 1)
+
+
+def buscar_categoria(nodo, nombre):
+    #Busca una categoria por nombre en cualquier nivel (sin acentos).
+    if nodo is None:
+        return None
+
+    if normalizar(nodo.nombre) == normalizar(nombre):
+        return nodo
+
+    for hijo in nodo.hijos:
+        resultado = buscar_categoria(hijo, nombre)
+
+        if resultado is not None:
+            return resultado
+
+    return None
+
+
+def camino_a_categoria(nodo, nombre):
+    #Lista de nombres desde la raiz hasta la categoria, o None.
+    if nodo is None:
+        return None
+
+    if normalizar(nodo.nombre) == normalizar(nombre):
+        return [nodo.nombre]
+
+    for hijo in nodo.hijos:
+        camino = camino_a_categoria(hijo, nombre)
+
+        if camino is not None:
+            return [nodo.nombre] + camino
+
+    return None
+
+
+def recorrido_preorden_categorias(nodo):
+    #Primero el nodo y despues sus hijos (de arriba hacia abajo).
+    if nodo is None:
+        return []
+
+    nombres = [nodo.nombre]
+
+    for hijo in nodo.hijos:
+        nombres.extend(recorrido_preorden_categorias(hijo))
+
+    return nombres
+
+
+def recorrido_postorden_categorias(nodo):
+    #Primero los hijos y despues el nodo (de abajo hacia arriba).
+    if nodo is None:
+        return []
+
+    nombres = []
+
+    for hijo in nodo.hijos:
+        nombres.extend(recorrido_postorden_categorias(hijo))
+
+    nombres.append(nodo.nombre)
+
+    return nombres
+
+
+def recorrido_por_niveles_categorias(raiz):
+    #Recorrido en anchura (BFS): nivel por nivel, con una cola.
+    if raiz is None:
+        return []
+
+    niveles = []
+    cola = deque([(raiz, 0)])
+
+    while cola:
+        nodo, nivel = cola.popleft()
+
+        if nivel == len(niveles):
+            niveles.append([])
+
+        niveles[nivel].append(nodo.nombre)
+
+        for hijo in nodo.hijos:
+            cola.append((hijo, nivel + 1))
+
+    return niveles
+
+
+def contar_categorias(nodo):
+    if nodo is None:
+        return 0
+
+    return 1 + sum(contar_categorias(hijo) for hijo in nodo.hijos)
+
+
+def mostrar_categoria(nodo, raiz, canciones, maximo=10):
+    #Muestra ruta, subcategorias y canciones de una categoria.
+    camino = camino_a_categoria(raiz, nodo.nombre)
+    print("\nRuta: " + " > ".join(camino))
+
+    if nodo.hijos:
+        print("Subcategorias: " + ", ".join(h.nombre for h in nodo.hijos))
+    else:
+        print("Subcategorias: (ninguna, es una categoria final)")
+
+    resultados = canciones_de_categoria(nodo, canciones)
+    print(f"Canciones en esta categoria: {len(resultados)}")
+
+    for cancion in resultados[:maximo]:
+        print("  " + str(cancion))
+
+    if len(resultados) > maximo:
+        print(f"  ... y {len(resultados) - maximo} mas.")
+
+
+def menu_categorias(arbol_categorias, canciones):
+    while True:
+        print("\n--- Explorar categorias ---")
+        print("1. Ver el arbol completo")
+        print("2. Buscar una categoria")
+        print("3. Recorridos del arbol")
+        print("0. Volver")
+
+        eleccion = input("Elegi una opcion: ")
+
+        if eleccion == "1":
+            print()
+            mostrar_categorias(arbol_categorias)
+            print(
+                f"\nTotal de categorias: "
+                f"{contar_categorias(arbol_categorias)}"
+            )
+
+        elif eleccion == "2":
+            nombre = input("Que categoria buscas? ")
+            nodo = buscar_categoria(arbol_categorias, nombre)
+
+            if nodo is not None:
+                mostrar_categoria(
+                    nodo, arbol_categorias, canciones
+                )
+            else:
+                print("No se encontro esa categoria.")
+
+        elif eleccion == "3":
+            print("\n1. Preorden (de arriba hacia abajo)")
+            print("2. Postorden (de abajo hacia arriba)")
+            print("3. Por niveles (en anchura)")
+
+            recorrido = input("Elegi un recorrido: ")
+
+            if recorrido == "1":
+                print(" -> ".join(
+                    recorrido_preorden_categorias(arbol_categorias)
+                ))
+            elif recorrido == "2":
+                print(" -> ".join(
+                    recorrido_postorden_categorias(arbol_categorias)
+                ))
+            elif recorrido == "3":
+                niveles = recorrido_por_niveles_categorias(
+                    arbol_categorias
+                )
+
+                for numero, nombres in enumerate(niveles):
+                    print(f"Nivel {numero}: " + ", ".join(nombres))
+            else:
+                print("Opcion invalida.")
+
+        elif eleccion == "0":
+            break
+
+        else:
+            print("Opcion invalida.")
+
+
+def menu(canciones, raiz, arbol_categorias):
     while True:
         print("\n" + "-" * 50)
-        print("MusicBox".center(50))
+        print(f"MusicBox v{VERSION}".center(50))
         print("-" * 50)
         print("1. Lista de Temas")
         print("2. Buscar canciones por titulo")
         print("3. Buscar canciones por artista")
-        print("4. Explorar por genero")
+        print("4. Explorar por genero o categorias")
         print("5. Ver mi Top de favoritas")
         print("6. Ver canciones relacionadas")
         print("7. Calificar cancion")
@@ -562,12 +847,24 @@ def menu(canciones, raiz):
             )
 
         elif opcion == "4":
-            genero = input("Que genero queres explorar? ")
-            resultados = filtrar_por_genero(canciones, genero)
-            mostrar_resultados(
-                resultados,
-                "No hay canciones de ese genero en el catalogo."
-            )
+            print("\n1. Explorar canciones por genero")
+            print("2. Explorar arbol de categorias")
+
+            eleccion = input("Elegi una opcion: ")
+
+            if eleccion == "1":
+                genero = input("Que genero queres explorar? ")
+                resultados = filtrar_por_genero(canciones, genero)
+                mostrar_resultados(
+                    resultados,
+                    "No hay canciones de ese genero en el catalogo."
+                )
+
+            elif eleccion == "2":
+                menu_categorias(arbol_categorias, canciones)
+
+            else:
+                print("Opcion invalida.")
 
         elif opcion == "5":
             print("Funcion de favoritas.")
@@ -607,17 +904,20 @@ def menu(canciones, raiz):
         elif opcion == "10":
             experimento_complejidad(canciones)
 
+        elif opcion == "11":
+            experimento_desbalance()
+
         elif opcion == "0":
             print("Gracias por usar MusicBox.")
             break
-        elif opcion == "11":
-            experimento_desbalance()
+
         else:
             print("Opcion invalida.")
 
 
 def main():
     canciones = cargar_canciones(RUTA_DATOS)
+    print(f"MusicBox version {VERSION}")
     print(f"Canciones cargadas: {len(canciones)}")
 
     raiz = None
@@ -628,7 +928,12 @@ def main():
     print("Altura del arbol:", altura(raiz))
     print("Factor de equilibrio de la raiz:", factor_equilibrio(raiz))
     print("¿Arbol AVL equilibrado?:", arbol_equilibrado(raiz))
-    menu(canciones, raiz)
+
+    arbol_categorias = crear_arbol_categorias()
+    agregar_generos_faltantes(arbol_categorias, canciones)
+    print("Categorias cargadas:", contar_categorias(arbol_categorias))
+
+    menu(canciones, raiz, arbol_categorias)
 
 
 if __name__ == "__main__":
