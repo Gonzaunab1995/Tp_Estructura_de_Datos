@@ -1,4 +1,4 @@
-# MusicBox — versión 3.0
+# MusicBox — versión 4.0
 
 Sistema de recomendaciones musicales — Trabajo Práctico Integrador de Estructuras de Datos.
 
@@ -6,22 +6,23 @@ Sistema de recomendaciones musicales — Trabajo Práctico Integrador de Estruct
 |---------|-----------|--------------------|
 | 1.0 | Objetos, clases y análisis de complejidad | TP1, TP2 |
 | 2.0 | Árbol binario de búsqueda y AVL | TP3, TP4 |
-| **3.0** | **Árbol general (n-ario) de categorías integrado a la terminal** | **TP5** |
+| 3.0 | Árbol general (n-ario) de categorías integrado a la terminal | TP5 |
+| 4.0 | Heap binaria de recomendaciones, calificación persistente y ranking Top-N | TP6 |
 
 # Descripción
 
 MusicBox permite cargar un catálogo de canciones, listarlas, buscarlas por
-título o artista, y filtrarlas por género, a través de una interfaz de
-terminal. Es un proyecto que va incorporando árboles, heaps y grafos en
-sucesivas entregas.
+título o artista, filtrarlas por género, calificarlas y ver un ranking dinámico
+de favoritas, todo desde la terminal. Es un proyecto que va incorporando
+árboles, heaps y grafos en sucesivas entregas.
 
 # Estructura del repositorio
 
 ```
 musicbox/
-├── main.py              # clases del dominio + árboles (BST / AVL / general) + interfaz de terminal
+├── main.py              # clases del dominio + árboles (BST / AVL / general) + heap + interfaz de terminal
 ├── datos/
-│   └── canciones.json   # catálogo de canciones
+│   └── canciones.json   # catálogo de canciones (guarda puntajes)
 └── README.md
 ```
 
@@ -32,115 +33,108 @@ musicbox/
 # Cómo ejecutar
 
 1. Cloná o descargá este repositorio.
-2. Parate en la carpeta musicbox/ (la que contiene main.py).
+2. Parate en la carpeta `musicbox/` (la que contiene `main.py`).
 3. Ejecutá:
 
-   ```
-   python3 main.py
-   ```
+```
+python3 main.py
+```
 
 4. Vas a ver el menú principal:
 
-   ```
-   MusicBox v3.0
-   1. Lista de Temas
-   2. Buscar canciones por titulo
-   3. Buscar canciones por artista
-   4. Explorar por genero o categorias
-   5. Ver mi Top de favoritas
-   6. Ver canciones relacionadas
-   7. Calificar cancion
-   8. Buscar titulo exacto con arbol
-   9. Recorrer arbol binario
-   10. Experimento de complejidad
-   11. Comparar BST común vs. AVL
-   0. Salir
-   ```
+```
+--------------------------------------------------
+                    MusicBox
+--------------------------------------------------
+1.  Lista de Temas
+2.  Buscar canciones por titulo
+3.  Buscar canciones por artista
+4.  Explorar por genero o categorias
+5.  Ver mi Top de favoritas
+6.  Ver canciones relacionadas
+7.  Calificar cancion
+8.  Buscar titulo exacto con arbol
+9.  Recorrer arbol binario
+10. Experimento de complejidad
+11. Comparar BST común vs. AVL
+12. Comparar Heap vs. ordenamiento
+0.  Salir
+```
 
 # Funcionalidades actuales
 
-1. Lista de Temas: muestra el catálogo completo, sin filtrar (cumple la operación "Listar").
-2. Buscar canciones por título: te pide el nombre de tu tema preferido o el que buscas en el momento.
-3. Buscar canciones por artista: te pide tu artista y muestra todos sus temas correspondientes.
-4. Explorar por género o categorías: abre un submenú con dos opciones: (1) listar las canciones de un género y (2) explorar el árbol de categorías (árbol general): ver el árbol, buscar una categoría y ver sus canciones, y mostrar los recorridos en preorden, postorden y por niveles (ver sección TP5).
-5. Ver mi Top de favoritas: pendiente.
-6. Ver canciones relacionadas: pendiente.
-7. Calificar canción: pendiente.
-8. Buscar título exacto con árbol: busca una canción por título exacto en el árbol AVL.
-9. Recorrer árbol binario: muestra el árbol en inorder, preorder o postorder.
-10. Experimento de complejidad: compara búsqueda secuencial vs búsqueda en árbol con distintos tamaños de entrada (ver sección de abajo).
-11. Comparar BST común vs. AVL: experimento de desbalance con títulos insertados en orden alfabético (ver sección TP4).
+1. **Lista de Temas**: muestra el catálogo completo, sin filtrar.
+2. **Buscar por título**: búsqueda parcial, devuelve todas las coincidencias.
+3. **Buscar por artista**: muestra todos los temas de un artista o banda.
+4. **Explorar por género o categorías**: submenú con dos opciones: (1) listar canciones de un género y (2) explorar el árbol general de categorías.
+5. **Ver mi Top de favoritas**: usa la heap para mostrar el ranking de las canciones más calificadas con medallas .
+6. **Ver canciones relacionadas**: pendiente.
+7. **Calificar canción**: asignás un puntaje del 1 al 10. El puntaje se guarda en `canciones.json` y persiste entre sesiones.
+8. **Buscar título exacto con árbol**: búsqueda exacta en el AVL.
+9. **Recorrer árbol binario**: inorder, preorder o postorder.
+10. **Experimento de complejidad**: compara búsqueda secuencial vs AVL con distintos tamaños de entrada.
+11. **Comparar BST común vs. AVL**: experimento de desbalance con títulos insertados en orden alfabético.
+12. **Comparar Heap vs. ordenamiento**: mide el tiempo de obtener el Top-N con heap versus ordenar todo el catálogo.
 
 # Modelo de clases
 
-- Artista: nombre y país.
-- Genero: nombre del género musical.
-- Album: título, año y el `Artista` al que pertenece.
-- Cancion: título, Artista, Album, `Genero` y duración en segundos.
-- NodoArbol: nodo de un árbol binario de búsqueda que almacena una Cancion, con referencias a izquierda y derecha. Se usa para indexar el catálogo por título, tanto en el BST común como en el AVL.
-- NodoGeneral: nodo de un árbol general (n-ario) con un nombre, una lista de hijos de cualquier tamaño y los géneros del catálogo que pertenecen a esa categoría. Se usa para la jerarquía de categorías del TP5.
+- `Artista`: nombre y país.
+- `Genero`: nombre del género musical.
+- `Album`: título, año y el `Artista` al que pertenece.
+- `Cancion`: título, `Artista`, `Album`, `Genero`, duración en segundos y puntaje personal. Incluye el método `calificar()` y el setter `mi_puntaje`.
+- `NodoArbol`: nodo del árbol binario (BST / AVL) que almacena una `Cancion` con referencias a izquierda y derecha.
+- `NodoGeneral`: nodo del árbol general (n-ario) con nombre y lista de hijos. Se usa para la jerarquía de categorías del TP5.
+- `HeapRecomendaciones`: heap binaria máxima implementada manualmente. Almacena pares `(prioridad, cancion)` y garantiza que el elemento de mayor prioridad siempre está en la raíz.
 
 # Búsqueda por título: dos estrategias
 
-Operación crítica: buscar canción por título. Implementada de dos formas
-sobre el mismo catálogo:
-
-- buscar_por_titulo: recorrido secuencial, coincidencia parcial (sirve para
-  autocompletar).
-- buscar_en_arbol + insertar_arbol: árbol ordenado por título, coincidencia
-  exacta. Desde el TP4, `insertar_arbol` es un AVL que se rebalancea solo.
+- `buscar_por_titulo`: recorrido secuencial, coincidencia parcial (autocompletar).
+- `buscar_en_arbol`: árbol AVL ordenado por título, coincidencia exacta, O(log n) promedio.
 
 # Análisis de complejidad
 
-| Estrategia                | Mejor caso | Promedio | Peor caso |
-|---------------------------|------------|----------|-----------|
-| Secuencial                | Θ(n)       | Θ(n)     | Θ(n)      |
-| Árbol (BST no balanceado) | Ω(1)       | Θ(log n) | O(n)      |
-| Árbol AVL                 | Ω(1)       | Θ(log n) | O(log n)  |
+| Estrategia                | Mejor caso | Promedio   | Peor caso |
+|---------------------------|------------|------------|-----------|
+| Secuencial                | Ω(1)       | Θ(n)       | O(n)      |
+| Árbol (BST no balanceado) | Ω(1)       | Θ(log n)   | O(n)      |
+| Árbol AVL                 | Ω(1)       | Θ(log n)   | O(log n)  |
 
-La secuencial siempre recorre las canciones (no corta, puede haber varias
-coincidencias parciales), por eso mejor y peor caso coinciden en Θ(n). El
-árbol descarta la mitad del subárbol en cada paso → Θ(log n) promedio, pero
-como el BST común (`insertar_bst`) no rebalancea, un árbol degenerado (títulos
-insertados ya ordenados) cae a O(n). El AVL evita ese caso con rotaciones y
-garantiza O(log n) también en el peor caso.
+La secuencial siempre recorre el catálogo completo cuando busca por coincidencia exacta → Θ(n). El AVL descarta mitades en cada paso → Θ(log n) promedio, y al ser balanceado garantiza O(log n) también en el peor caso.
 
-# Experimento y resultados
+# Experimento y resultados (TP2/TP3)
 
-Se corre con la opción 10 del menú ("experimento_complejidad"), que genera
-catálogos de prueba de distinto tamaño y mide el tiempo de cada estrategia.
+Se corre con la opción 10. Genera catálogos de prueba y mide el tiempo de cada estrategia.
 
-| N elementos | Secuencial  | Árbol     |
+| N elementos | Secuencial  | AVL       |
 |-------------|-------------|-----------|
 | 100         | 0.0084 ms   | 0.0054 ms |
 | 1.000       | 0.0649 ms   | 0.0058 ms |
 | 10.000      | 0.7615 ms   | 0.0102 ms |
 
-A mayor cantidad de elementos ,el Árbol va ser mas rapido ; la secuencial crece
-linealmente con "N" cantidad de elmentos, el árbol prácticamente no.
+A mayor cantidad de elementos el AVL es notablemente más rápido; la secuencial crece linealmente con N, el árbol prácticamente no.
 
 # Conclusión técnica
 
-El árbol te conviene cuando tenés muchas canciones y buscás seguido: tarda un poco más en armarse, pero después cada búsqueda es mucho más rápida, así que vale la pena. La secuencial no se puede sacar del medio porque es la única que permite autocompletar (buscar por coincidencia parcial), cosa que el árbol no hace. Y si el catálogo es chico o cambia todo el tiempo, no tiene sentido complicarse con el árbol: como un BST común no se rebalancea, se puede terminar degenerando y rindiendo igual (o peor) que la secuencial. Eso se resuelve con el AVL implementado en el TP4 (ver sección siguiente).
+El árbol conviene cuando el catálogo es grande y se busca seguido: tarda un poco más en armarse, pero después cada búsqueda es mucho más rápida. La secuencial no se puede eliminar porque es la única que permite autocompletar (coincidencia parcial). Si el catálogo es chico o cambia todo el tiempo, el árbol no aporta ventaja real.
 
 # TP4: El árbol también puede enfermarse
 
 ## Objetivo
 
-Investigar qué ocurre cuando un árbol binario de búsqueda (BST) pierde el equilibrio, implementar un árbol AVL que lo evite y comparar ambos en casos de desbalance.
+Investigar qué ocurre cuando un BST pierde el equilibrio, implementar un AVL que lo evite y comparar ambos en casos de desbalance.
 
 ## Implementación
 
-- **BST común** (`insertar_bst`): inserta cada título según su orden alfabético (sin distinguir mayúsculas) y no realiza ningún reequilibrio.
-- **AVL** (`insertar_arbol`): después de cada inserción calcula el factor de equilibrio (altura izquierda − altura derecha) de cada nodo del camino. Si queda fuera del rango [-1, 1], aplica la rotación correspondiente:
+- **BST común** (`insertar_bst`): inserta sin reequilibrar.
+- **AVL** (`insertar_arbol`): calcula el factor de equilibrio tras cada inserción y aplica la rotación correspondiente:
   - **Izquierda-izquierda:** rotación simple a la derecha.
   - **Derecha-derecha:** rotación simple a la izquierda.
-  - **Izquierda-derecha:** rotación doble (izquierda y luego derecha).
-  - **Derecha-izquierda:** rotación doble (derecha y luego izquierda).
+  - **Izquierda-derecha:** rotación doble (izquierda luego derecha).
+  - **Derecha-izquierda:** rotación doble (derecha luego izquierda).
 
-## Experimento de desbalance
+## Experimento de desbalance (opción 11)
 
-Se generaron conjuntos de 100, 500 y 900 canciones sintéticas (se usaron datos generados para poder escalar la cantidad de elementos). Los títulos se insertaron en **orden alfabético**, que es el peor caso para un BST común. Luego se buscó el último título insertado, que es el que más comparaciones exige en el BST. Se ejecuta desde la opción 11 del menú.
+Los títulos se insertaron en orden alfabético, que es el peor caso para un BST común.
 
 | Canciones | Altura BST | Altura AVL | Comparaciones BST | Comparaciones AVL |
 |-----------|------------|------------|-------------------|-------------------|
@@ -148,36 +142,27 @@ Se generaron conjuntos de 100, 500 y 900 canciones sintéticas (se usaron datos 
 | 500       | 500        | 9          | 500               | 9                 |
 | 900       | 900        | 10         | 900               | 10                |
 
-Para 900 canciones la altura del AVL fue 10, lo esperado según la teoría, ya que log₂(900) ≈ 9,8.
+Para 900 canciones la altura del AVL fue 10, lo esperado según la teoría (log₂(900) ≈ 9,8).
+
+## Resultados
+
+El BST común se desbalanceó por completo: su altura coincidió con la cantidad de canciones y la búsqueda necesitó 900 comparaciones. El AVL mantuvo altura logarítmica y necesitó solo 10 comparaciones para las mismas 900 canciones.
+
+En conclusión, el equilibrio es fundamental para conservar la eficiencia de las búsquedas. El AVL evita que el árbol se degrade hasta comportarse como una lista enlazada. El BST común sigue siendo útil cuando los datos llegan en orden aleatorio o el catálogo es pequeño, ya que no tiene el costo extra de las rotaciones.
 
 ## Limitaciones
 
-- Solo se probó el orden ascendente, que es el peor caso. Con inserción aleatoria, el BST común queda mucho menos desbalanceado.
-- La inserción del AVL es más costosa que la búsqueda, porque el factor de equilibrio se calcula recorriendo los subárboles. Una mejora posible es guardar la altura en cada nodo.
-- Los títulos duplicados no se insertan en el árbol.
-
-
-## Resultados del experimento: BST común vs. AVL
-
-Se comparó un árbol binario de búsqueda común (BST) con un árbol AVL utilizando conjuntos de 100, 500 y 900 canciones cuyos títulos se insertaron en orden alfabético.
-
-Los resultados mostraron que el BST común se desbalanceó por completo: su altura coincidió con la cantidad de canciones. Para 900 canciones, la búsqueda del título seleccionado necesitó 900 comparaciones.
-
-En cambio, el AVL mantuvo una altura reducida gracias a las rotaciones de equilibrio. Para las mismas 900 canciones, la búsqueda necesitó solamente 10 comparaciones.
-
-Esto demuestra que el orden de inserción puede afectar considerablemente el rendimiento de un BST común. En el peor caso, la búsqueda en un BST desbalanceado tiene complejidad O(n), mientras que en un AVL la búsqueda tiene complejidad O(log n), debido a que el árbol mantiene una altura logarítmica.
-
-En conclusión, el equilibrio es fundamental para conservar la eficiencia de las búsquedas cuando aumenta la cantidad de elementos. El AVL evita que el árbol se degrade hasta comportarse como una lista enlazada.
+- Solo se probó inserción en orden ascendente (peor caso). Con inserción aleatoria el BST queda mucho menos desbalanceado.
+- El factor de equilibrio se recalcula recorriendo los subárboles. Una mejora posible es guardar la altura en cada nodo para calcularlo en O(1).
+- Los títulos duplicados no se insertan.
 
 # TP5: Árboles generales (n-arios)
 
 ## Objetivo
 
-Representar una jerarquía natural del dominio con un árbol general, donde cada nodo puede tener cualquier cantidad de hijos, e integrarla a la interfaz de terminal.
+Representar una jerarquía natural del dominio con un árbol general (cada nodo puede tener cualquier cantidad de hijos) e integrarla a la terminal.
 
 ## Jerarquía elegida
-
-Los géneros musicales se organizan por familias. La jerarquía se construyó con los **géneros reales del catálogo** (`canciones.json`), así que cada categoría final corresponde a canciones concretas:
 
 ```
 Música
@@ -206,87 +191,67 @@ Música
     └── Funk
 ```
 
-Son 24 categorías en 3 niveles. Las categorías intermedias (por ejemplo Metal) no tienen canciones propias: sus canciones son las de todas sus subcategorías. Rock y Pop sí tienen canciones propias, porque "Rock" y "Pop" también son géneros del catálogo. Si el catálogo trae un género que no está en la jerarquía, el programa lo cuelga automáticamente de una categoría **Otros**, así ninguna canción queda afuera.
+## Complejidad
+
+Con `n` categorías, la búsqueda y todos los recorridos son O(n): en el peor caso visitan cada nodo una vez.
+
+# TP6: Sistema de recomendaciones mediante Heap Binaria
+
+## Objetivo
+
+Implementar un ranking dinámico de canciones favoritas usando una heap binaria máxima, integrada al sistema real de calificaciones.
 
 ## Implementación
 
-- **`NodoGeneral`**: nodo con `nombre`, lista `hijos` y `generos` (los géneros del catálogo que pertenecen directamente a la categoría). Incluye `agregar_hijo`.
-- **`crear_arbol_categorias`**: arma la jerarquía.
-- **`agregar_generos_faltantes`**: cuelga de "Otros" los géneros del catálogo que no figuran en el árbol.
-- **`canciones_de_categoria`**: devuelve las canciones de una categoría y de todos sus descendientes.
+La clase `HeapRecomendaciones` implementa manualmente las operaciones básicas:
 
-## Búsquedas
+- `insertar(prioridad, cancion)`: agrega al final y sube hasta restaurar la propiedad del Max-Heap → O(log n).
+- `_subir(indice)`: compara el nodo con su padre y los intercambia mientras el hijo tenga mayor prioridad.
+- `extraer_maximo()`: extrae la raíz (el de mayor prioridad), pone el último elemento en la raíz y baja → O(log n).
+- `_bajar(indice)`: compara el nodo con sus dos hijos y lo intercambia con el mayor mientras sea necesario.
 
-- **`buscar_categoria(nodo, nombre)`**: búsqueda en profundidad por nombre en cualquier nivel. Ignora mayúsculas y acentos (buscar "musica" encuentra "Música").
-- **`camino_a_categoria(nodo, nombre)`**: devuelve la ruta desde la raíz, por ejemplo `Música > Metal > Thrash Metal`.
+La función de prioridad es `calcular_prioridad(cancion)`, que devuelve el `mi_puntaje` asignado por el usuario (escala 1-10).
 
-## Recorridos
+## Función obtener_top_N
 
-| Recorrido | Función | Orden |
-|-----------|---------|-------|
-| Preorden | `recorrido_preorden_categorias` | Primero el nodo y después sus hijos (de arriba hacia abajo). |
-| Postorden | `recorrido_postorden_categorias` | Primero los hijos y después el nodo (de abajo hacia arriba). |
-| Por niveles (anchura) | `recorrido_por_niveles_categorias` | Nivel por nivel, usando una cola (`deque`). |
-
-Además, `mostrar_categorias` imprime el árbol indentado (es un preorden con sangría).
-
-Ejemplos de salida con el catálogo del proyecto:
-
-**Por niveles**
-```
-Nivel 0: Música
-Nivel 1: Rock, Metal, Pop, Música popular argentina, Electrónica, Jazz y Funk
-Nivel 2: Alternative Rock, Funk Rock, Grunge, Hard Rock, Heavy Metal, Thrash Metal, Nu Metal, Industrial Metal, Pop Latino, Folclore, Chacarera, Cuarteto, Cumbia Villera, Dubstep, House, Jazz, Funk
-```
-
-**Preorden**
-```
-Música -> Rock -> Alternative Rock -> Funk Rock -> Grunge -> Hard Rock -> Metal -> Heavy Metal -> Thrash Metal -> Nu Metal -> Industrial Metal -> Pop -> Pop Latino -> ...
-```
-
-**Postorden**
-```
-Alternative Rock -> Funk Rock -> Grunge -> Hard Rock -> Rock -> Heavy Metal -> Thrash Metal -> Nu Metal -> Industrial Metal -> Metal -> Pop Latino -> Pop -> ...
-```
-
-**Búsqueda de una categoría** (opción 4 → 2 → 2, buscando "thrash metal")
-```
-Ruta: Música > Metal > Thrash Metal
-Subcategorias: (ninguna, es una categoria final)
-Canciones en esta categoria: 6
-  Battery - Metallica (Estados Unidos) (Thrash Metal, 1986) [312s]
-  ...
-```
-
-## Integración en la terminal
-
-La opción **4. Explorar por género o categorías** abre un submenú. La entrada **2. Explorar arbol de categorias** abre el explorador del árbol general:
+`obtener_top_n(canciones, n=5)` inserta todas las canciones calificadas en la heap y extrae las `n` de mayor prioridad. Se ejecuta desde la opción 5 del menú y muestra el resultado con medallas:
 
 ```
-1. Explorar canciones por genero
-2. Explorar arbol de categorias
+===== TOP 5 DE CANCIONES FAVORITAS =====
+ Bohemian Rhapsody - Puntaje: 10/10
+ Master of Puppets - Puntaje: 9/10
+ Californication - Puntaje: 8/10
+4. One - Puntaje: 7/10
+5. Battery - Puntaje: 7/10
 ```
 
-```
---- Explorar categorias ---
-1. Ver el arbol completo
-2. Buscar una categoria
-3. Recorridos del arbol
-0. Volver
-```
+## Calificación persistente
 
-Al buscar una categoría se muestran su ruta, sus subcategorías y sus canciones (las primeras 10 y la cantidad restante). Buscar "Música" muestra las 151 canciones del catálogo, ya que incluye todas las ramas. El árbol se construye una sola vez al iniciar el programa, junto con el AVL.
+Al calificar una canción (opción 7), el puntaje se guarda en `canciones.json` mediante `guardar_puntajes()`. La próxima vez que se ejecute el programa, `cargar_canciones()` recupera los puntajes con `dato.get("mi_puntaje", 0)`, por lo que el ranking persiste entre sesiones.
 
-## Complejidad
+## Comparación Heap vs. Ordenamiento (opción 12)
 
-Con `n` categorías, la búsqueda y todos los recorridos son **O(n)**: en el peor caso visitan cada nodo una vez. Se justifica porque la jerarquía es chica y no está ordenada, a diferencia del AVL de títulos, donde el orden permite descartar mitades.
+| Estrategia | Complejidad |
+|------------|-------------|
+| Heap Top-N | O(n log n) construcción + O(k log n) extracciones |
+| Ordenar todo | O(n log n) |
 
-## Limitaciones
+El heap es especialmente útil cuando la colección es grande y se necesita un Top-N pequeño: no hace falta ordenar todo el dataset, solo extraer los `k` mejores. En conjuntos pequeños, ordenar todo puede ser igual de eficiente o incluso más rápido en la práctica, ya que `sorted()` de Python está altamente optimizado.
 
-- La jerarquía está escrita en el código (`crear_arbol_categorias`). Agregar una familia nueva requiere modificarlo, aunque los géneros nuevos del catálogo igual aparecen bajo "Otros".
-- La búsqueda de categorías es por nombre completo, no por coincidencia parcial.
+## Justificación de la elección
+
+Se eligió el heap porque permite insertar en O(log n) y extraer el máximo en O(log n). Para obtener los primeros `k` resultados el costo es O(k log n), una vez construido el heap. Ordenar todo el conjunto requiere O(n log n) independientemente de cuántos resultados se necesiten. Cuando `k` es mucho menor que `n`, el heap gana claramente.
 
 # Estado del proyecto
 
-TP1 (Objetos y clases), TP2 (análisis de complejidad), TP3 (árbol binario de búsqueda), TP4 (AVL y comparación contra BST común) y TP5 (árbol general de categorías) completos. Versión actual: **3.0**.
-Tp6 a continuar....
+| TP | Contenido | Estado |
+|----|-----------|--------|
+| TP1 | Objetos y clases | ✅ |
+| TP2 | Análisis de complejidad, búsqueda secuencial vs árbol | ✅ |
+| TP3 | Árbol binario de búsqueda (BST), recorridos | ✅ |
+| TP4 | AVL, rotaciones, comparación contra BST desbalanceado | ✅ |
+| TP5 | Árbol general (n-ario) de categorías musicales | ✅ |
+| TP6 | Heap binaria, ranking Top-N, calificación persistente | ✅ |
+
+Versión actual: 4.0. 
+Próxima etapa: grafos.

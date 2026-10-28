@@ -6,7 +6,8 @@
         "album": "Out of Time",
         "anio": 1991,
         "genero": "Alternative Rock",
-        "duracion": 268
+        "duracion": 268,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ave de Paso",
@@ -15,7 +16,8 @@
         "album": "Ave de Paso",
         "anio": 1995,
         "genero": "Chacarera",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Carinito Malo",
@@ -24,7 +26,8 @@
         "album": "Los Nocheros",
         "anio": 1990,
         "genero": "Chacarera",
-        "duracion": 190
+        "duracion": 190,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Chacarera del Rancho",
@@ -33,7 +36,8 @@
         "album": "Origen",
         "anio": 2010,
         "genero": "Chacarera",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cielo del 22",
@@ -42,7 +46,8 @@
         "album": "Cielo del 22",
         "anio": 2000,
         "genero": "Chacarera",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cuando Tenga la Tierra",
@@ -51,7 +56,8 @@
         "album": "Grandes Exitos",
         "anio": 1998,
         "genero": "Chacarera",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Chica Sexy",
@@ -60,7 +66,8 @@
         "album": "Single",
         "anio": 2011,
         "genero": "Cuarteto",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Eso Duele",
@@ -69,7 +76,8 @@
         "album": "Single",
         "anio": 2012,
         "genero": "Cuarteto",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "La Cabana",
@@ -78,7 +86,8 @@
         "album": "Ven y Dime",
         "anio": 2000,
         "genero": "Cuarteto",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "La Cumbita",
@@ -87,7 +96,8 @@
         "album": "Ven a Bailar",
         "anio": 1999,
         "genero": "Cuarteto",
-        "duracion": 190
+        "duracion": 190,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Olvidala",
@@ -96,7 +106,8 @@
         "album": "Single",
         "anio": 2007,
         "genero": "Cuarteto",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Que Bonito",
@@ -105,7 +116,8 @@
         "album": "Single",
         "anio": 2005,
         "genero": "Cuarteto",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Que Locura",
@@ -114,7 +126,8 @@
         "album": "Ven a Bailar",
         "anio": 1999,
         "genero": "Cuarteto",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Quiero Saber de Ti",
@@ -123,7 +136,8 @@
         "album": "Single",
         "anio": 2013,
         "genero": "Cuarteto",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Rafaga de Amor",
@@ -132,7 +146,8 @@
         "album": "Ven y Dime",
         "anio": 2000,
         "genero": "Cuarteto",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ritmos Merembe",
@@ -141,7 +156,8 @@
         "album": "Single",
         "anio": 2010,
         "genero": "Cuarteto",
-        "duracion": 190
+        "duracion": 190,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ando Rajao",
@@ -150,7 +166,8 @@
         "album": "Lo Mejor del Potro",
         "anio": 1996,
         "genero": "Cuarteto",
-        "duracion": 230
+        "duracion": 230,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Como Olvidarte",
@@ -159,7 +176,8 @@
         "album": "La Mano del Potro",
         "anio": 1999,
         "genero": "Cuarteto",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Diste Vuelta la Pagina",
@@ -168,7 +186,8 @@
         "album": "Fuerte",
         "anio": 1997,
         "genero": "Cuarteto",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Gitana",
@@ -177,7 +196,8 @@
         "album": "Gracias a Dios Soy Argentino",
         "anio": 1998,
         "genero": "Cuarteto",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ha Llegado el Potro",
@@ -186,7 +206,8 @@
         "album": "Ha Llegado el Potro",
         "anio": 1994,
         "genero": "Cuarteto",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Mientras No Estes",
@@ -195,7 +216,8 @@
         "album": "Fuerte",
         "anio": 1997,
         "genero": "Cuarteto",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "No Voy en Tren",
@@ -204,7 +226,8 @@
         "album": "La Mano del Potro",
         "anio": 1999,
         "genero": "Cuarteto",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Que Se Mueran de Envidia",
@@ -213,7 +236,8 @@
         "album": "La Mano del Potro",
         "anio": 1999,
         "genero": "Cuarteto",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Soy Cordobes",
@@ -222,7 +246,8 @@
         "album": "Fuerte",
         "anio": 1997,
         "genero": "Cuarteto",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Traidora",
@@ -231,7 +256,8 @@
         "album": "La Mano del Potro",
         "anio": 1999,
         "genero": "Cuarteto",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Borracho y Amanecido",
@@ -240,7 +266,8 @@
         "album": "Esquivando el Exito",
         "anio": 2012,
         "genero": "Cumbia Villera",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Carita de Alfajor",
@@ -249,7 +276,8 @@
         "album": "Carita de Alfajor",
         "anio": 2021,
         "genero": "Cumbia Villera",
-        "duracion": 190
+        "duracion": 190,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Corazon de Arroz",
@@ -258,7 +286,8 @@
         "album": "Sin Remedio",
         "anio": 2005,
         "genero": "Cumbia Villera",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "El Mono Relojero",
@@ -267,7 +296,8 @@
         "album": "El Mono Relojero",
         "anio": 2025,
         "genero": "Cumbia Villera",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "La Picadura",
@@ -276,7 +306,8 @@
         "album": "20 Grandes Exitos",
         "anio": 2015,
         "genero": "Cumbia Villera",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Perrito Malvado",
@@ -285,7 +316,8 @@
         "album": "Single",
         "anio": 2021,
         "genero": "Cumbia Villera",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Se Descontrolo",
@@ -294,7 +326,8 @@
         "album": "Operacion Damas Gratis",
         "anio": 2002,
         "genero": "Cumbia Villera",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sos Boton",
@@ -303,7 +336,8 @@
         "album": "En Vivo - Hasta las Manos",
         "anio": 2001,
         "genero": "Cumbia Villera",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Vamos a Robar",
@@ -312,7 +346,8 @@
         "album": "Solo para Entendidos",
         "anio": 2006,
         "genero": "Cumbia Villera",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Yo Soy Polenta",
@@ -321,7 +356,8 @@
         "album": "100% Negro Cumbiero",
         "anio": 2004,
         "genero": "Cumbia Villera",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Bangarang",
@@ -330,7 +366,8 @@
         "album": "Bangarang",
         "anio": 2011,
         "genero": "Dubstep",
-        "duracion": 214
+        "duracion": 214,
+        "mi_puntaje": 0
     },
     {
         "titulo": "First of the Year (Equinox)",
@@ -339,7 +376,8 @@
         "album": "Bangarang",
         "anio": 2011,
         "genero": "Dubstep",
-        "duracion": 250
+        "duracion": 250,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Kill Everybody",
@@ -348,7 +386,8 @@
         "album": "Recess",
         "anio": 2014,
         "genero": "Dubstep",
-        "duracion": 300
+        "duracion": 300,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Purple Lamborghini",
@@ -357,7 +396,8 @@
         "album": "Suicide Squad: The Album (single)",
         "anio": 2016,
         "genero": "Dubstep",
-        "duracion": 194
+        "duracion": 194,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ragga Bomb",
@@ -366,7 +406,8 @@
         "album": "Single",
         "anio": 2010,
         "genero": "Dubstep",
-        "duracion": 230
+        "duracion": 230,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Right In",
@@ -375,7 +416,8 @@
         "album": "Recess",
         "anio": 2014,
         "genero": "Dubstep",
-        "duracion": 258
+        "duracion": 258,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Rock n' Roll (Will Take You to the Mountain)",
@@ -384,7 +426,8 @@
         "album": "Scary Monsters and Nice Sprites",
         "anio": 2010,
         "genero": "Dubstep",
-        "duracion": 244
+        "duracion": 244,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Scary Monsters and Nice Sprites",
@@ -393,7 +436,8 @@
         "album": "Scary Monsters and Nice Sprites",
         "anio": 2010,
         "genero": "Dubstep",
-        "duracion": 255
+        "duracion": 255,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Summit",
@@ -402,7 +446,8 @@
         "album": "Single",
         "anio": 2013,
         "genero": "Dubstep",
-        "duracion": 247
+        "duracion": 247,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Try It Out",
@@ -411,7 +456,8 @@
         "album": "Single",
         "anio": 2011,
         "genero": "Dubstep",
-        "duracion": 240
+        "duracion": 240,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cerquita de Vos",
@@ -420,7 +466,8 @@
         "album": "Cerquita de Vos",
         "anio": 2005,
         "genero": "Folclore",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cuando Ya No Este",
@@ -429,7 +476,8 @@
         "album": "Grandes Exitos",
         "anio": 2001,
         "genero": "Folclore",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cunatai",
@@ -438,7 +486,8 @@
         "album": "Herencia",
         "anio": 2008,
         "genero": "Folclore",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Para Cantarle a mi Gente",
@@ -447,7 +496,8 @@
         "album": "Para Cantarle a mi Gente",
         "anio": 1993,
         "genero": "Folclore",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Zamba de mi Esperanza",
@@ -456,7 +506,8 @@
         "album": "En Vivo",
         "anio": 1996,
         "genero": "Folclore",
-        "duracion": 220
+        "duracion": 220,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Superstition",
@@ -465,7 +516,8 @@
         "album": "Talking Book",
         "anio": 1972,
         "genero": "Funk",
-        "duracion": 245
+        "duracion": 245,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Around the World",
@@ -474,7 +526,8 @@
         "album": "Californication",
         "anio": 1999,
         "genero": "Funk Rock",
-        "duracion": 240
+        "duracion": 240,
+        "mi_puntaje": 0
     },
     {
         "titulo": "By the Way",
@@ -483,7 +536,8 @@
         "album": "By the Way",
         "anio": 2002,
         "genero": "Funk Rock",
-        "duracion": 216
+        "duracion": 216,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Californication",
@@ -492,7 +546,8 @@
         "album": "Californication",
         "anio": 1999,
         "genero": "Funk Rock",
-        "duracion": 329
+        "duracion": 329,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Can't Stop",
@@ -501,7 +556,8 @@
         "album": "By the Way",
         "anio": 2002,
         "genero": "Funk Rock",
-        "duracion": 269
+        "duracion": 269,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Dani California",
@@ -510,7 +566,8 @@
         "album": "Stadium Arcadium",
         "anio": 2006,
         "genero": "Funk Rock",
-        "duracion": 284
+        "duracion": 284,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Give It Away",
@@ -519,7 +576,8 @@
         "album": "Blood Sugar Sex Magik",
         "anio": 1991,
         "genero": "Funk Rock",
-        "duracion": 277
+        "duracion": 277,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Otherside",
@@ -528,7 +586,8 @@
         "album": "Californication",
         "anio": 1999,
         "genero": "Funk Rock",
-        "duracion": 255
+        "duracion": 255,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Scar Tissue",
@@ -537,7 +596,8 @@
         "album": "Californication",
         "anio": 1999,
         "genero": "Funk Rock",
-        "duracion": 217
+        "duracion": 217,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Snow (Hey Oh)",
@@ -546,7 +606,8 @@
         "album": "Stadium Arcadium",
         "anio": 2006,
         "genero": "Funk Rock",
-        "duracion": 334
+        "duracion": 334,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Under the Bridge",
@@ -555,7 +616,8 @@
         "album": "Blood Sugar Sex Magik",
         "anio": 1991,
         "genero": "Funk Rock",
-        "duracion": 264
+        "duracion": 264,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Smells Like Teen Spirit",
@@ -564,7 +626,8 @@
         "album": "Nevermind",
         "anio": 1991,
         "genero": "Grunge",
-        "duracion": 301
+        "duracion": 301,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Whiskey in the Jar",
@@ -573,7 +636,8 @@
         "album": "Garage Inc.",
         "anio": 1998,
         "genero": "Hard Rock",
-        "duracion": 312
+        "duracion": 312,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Enter Sandman",
@@ -582,7 +646,8 @@
         "album": "Metallica (Black Album)",
         "anio": 1991,
         "genero": "Heavy Metal",
-        "duracion": 331
+        "duracion": 331,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sad But True",
@@ -591,7 +656,8 @@
         "album": "Metallica (Black Album)",
         "anio": 1991,
         "genero": "Heavy Metal",
-        "duracion": 324
+        "duracion": 324,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Get Lucky",
@@ -600,7 +666,8 @@
         "album": "Random Access Memories",
         "anio": 2013,
         "genero": "House",
-        "duracion": 369
+        "duracion": 369,
+        "mi_puntaje": 0
     },
     {
         "titulo": "One More Time",
@@ -609,7 +676,8 @@
         "album": "Discovery",
         "anio": 2000,
         "genero": "House",
-        "duracion": 320
+        "duracion": 320,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Amerika",
@@ -618,7 +686,8 @@
         "album": "Reise, Reise",
         "anio": 2004,
         "genero": "Industrial Metal",
-        "duracion": 223
+        "duracion": 223,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Deutschland",
@@ -627,7 +696,8 @@
         "album": "Rammstein",
         "anio": 2019,
         "genero": "Industrial Metal",
-        "duracion": 328
+        "duracion": 328,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Du Hast",
@@ -636,7 +706,8 @@
         "album": "Sehnsucht",
         "anio": 1997,
         "genero": "Industrial Metal",
-        "duracion": 234
+        "duracion": 234,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Engel",
@@ -645,7 +716,8 @@
         "album": "Sehnsucht",
         "anio": 1997,
         "genero": "Industrial Metal",
-        "duracion": 265
+        "duracion": 265,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Feuer Frei!",
@@ -654,7 +726,8 @@
         "album": "Mutter",
         "anio": 2001,
         "genero": "Industrial Metal",
-        "duracion": 194
+        "duracion": 194,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ich Will",
@@ -663,7 +736,8 @@
         "album": "Mutter",
         "anio": 2001,
         "genero": "Industrial Metal",
-        "duracion": 234
+        "duracion": 234,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Mein Herz Brennt",
@@ -672,7 +746,8 @@
         "album": "Mutter",
         "anio": 2001,
         "genero": "Industrial Metal",
-        "duracion": 257
+        "duracion": 257,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Pussy",
@@ -681,7 +756,8 @@
         "album": "Liebe ist für alle da",
         "anio": 2009,
         "genero": "Industrial Metal",
-        "duracion": 256
+        "duracion": 256,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Rosenrot",
@@ -690,7 +766,8 @@
         "album": "Rosenrot",
         "anio": 2005,
         "genero": "Industrial Metal",
-        "duracion": 257
+        "duracion": 257,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sonne",
@@ -699,7 +776,8 @@
         "album": "Mutter",
         "anio": 2001,
         "genero": "Industrial Metal",
-        "duracion": 269
+        "duracion": 269,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Take Five",
@@ -708,7 +786,8 @@
         "album": "Time Out",
         "anio": 1959,
         "genero": "Jazz",
-        "duracion": 324
+        "duracion": 324,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Before I Forget",
@@ -717,7 +796,8 @@
         "album": "Vol. 3: (The Subliminal Verses)",
         "anio": 2004,
         "genero": "Nu Metal",
-        "duracion": 337
+        "duracion": 337,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Custer",
@@ -726,7 +806,8 @@
         "album": ".5: The Gray Chapter",
         "anio": 2014,
         "genero": "Nu Metal",
-        "duracion": 233
+        "duracion": 233,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Duality",
@@ -735,7 +816,8 @@
         "album": "Vol. 3: (The Subliminal Verses)",
         "anio": 2004,
         "genero": "Nu Metal",
-        "duracion": 253
+        "duracion": 253,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Left Behind",
@@ -744,7 +826,8 @@
         "album": "Iowa",
         "anio": 2001,
         "genero": "Nu Metal",
-        "duracion": 202
+        "duracion": 202,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Psychosocial",
@@ -753,7 +836,8 @@
         "album": "All Hope Is Gone",
         "anio": 2008,
         "genero": "Nu Metal",
-        "duracion": 302
+        "duracion": 302,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Spit It Out",
@@ -762,7 +846,8 @@
         "album": "Slipknot",
         "anio": 1999,
         "genero": "Nu Metal",
-        "duracion": 244
+        "duracion": 244,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sulfur",
@@ -771,7 +856,8 @@
         "album": "All Hope Is Gone",
         "anio": 2008,
         "genero": "Nu Metal",
-        "duracion": 289
+        "duracion": 289,
+        "mi_puntaje": 0
     },
     {
         "titulo": "The Devil in I",
@@ -780,7 +866,8 @@
         "album": ".5: The Gray Chapter",
         "anio": 2014,
         "genero": "Nu Metal",
-        "duracion": 320
+        "duracion": 320,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Unsainted",
@@ -789,7 +876,8 @@
         "album": "We Are Not Your Kind",
         "anio": 2019,
         "genero": "Nu Metal",
-        "duracion": 324
+        "duracion": 324,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Wait and Bleed",
@@ -798,7 +886,8 @@
         "album": "Slipknot",
         "anio": 1999,
         "genero": "Nu Metal",
-        "duracion": 232
+        "duracion": 232,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Billie Jean",
@@ -807,7 +896,8 @@
         "album": "Thriller",
         "anio": 1982,
         "genero": "Pop",
-        "duracion": 294
+        "duracion": 294,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Bailando Bachata",
@@ -816,7 +906,8 @@
         "album": "No Hay Imposibles",
         "anio": 2014,
         "genero": "Pop Latino",
-        "duracion": 190
+        "duracion": 190,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Caprichosa",
@@ -825,7 +916,8 @@
         "album": "Simplemente...",
         "anio": 1996,
         "genero": "Pop Latino",
-        "duracion": 235
+        "duracion": 235,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cuidarte el Alma",
@@ -834,7 +926,8 @@
         "album": "En Todo Estare",
         "anio": 2014,
         "genero": "Pop Latino",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Lola",
@@ -843,7 +936,8 @@
         "album": "Atado a tu Amor",
         "anio": 1998,
         "genero": "Pop Latino",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Salome",
@@ -852,7 +946,8 @@
         "album": "Grandes Exitos",
         "anio": 2003,
         "genero": "Pop Latino",
-        "duracion": 220
+        "duracion": 220,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Torero",
@@ -861,7 +956,8 @@
         "album": "Simplemente...",
         "anio": 1996,
         "genero": "Pop Latino",
-        "duracion": 240
+        "duracion": 240,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Un Siglo Sin Ti",
@@ -870,7 +966,8 @@
         "album": "Sincero",
         "anio": 2003,
         "genero": "Pop Latino",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Volver a Nacer",
@@ -879,7 +976,8 @@
         "album": "Sincero",
         "anio": 2003,
         "genero": "Pop Latino",
-        "duracion": 220
+        "duracion": 220,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Y Tu Te Vas",
@@ -888,7 +986,8 @@
         "album": "Atado a tu Amor",
         "anio": 1998,
         "genero": "Pop Latino",
-        "duracion": 230
+        "duracion": 230,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Yo Te Amo",
@@ -897,7 +996,8 @@
         "album": "En Todo Estare",
         "anio": 2014,
         "genero": "Pop Latino",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Flaca",
@@ -906,7 +1006,8 @@
         "album": "Alta suciedad",
         "anio": 1997,
         "genero": "Rock",
-        "duracion": 250
+        "duracion": 250,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Al Fin Estamos Solos",
@@ -915,7 +1016,8 @@
         "album": "Genios Anonimos",
         "anio": 2008,
         "genero": "Rock",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Cara de Rusa",
@@ -924,7 +1026,8 @@
         "album": "Otras Canciones",
         "anio": 2005,
         "genero": "Rock",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ella Dice",
@@ -933,7 +1036,8 @@
         "album": "Otras Canciones",
         "anio": 2005,
         "genero": "Rock",
-        "duracion": 230
+        "duracion": 230,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Encima Vino Ella",
@@ -942,7 +1046,8 @@
         "album": "Donde el Viento Sopla Fuerte",
         "anio": 2010,
         "genero": "Rock",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Estados Alterados",
@@ -951,7 +1056,8 @@
         "album": "Estados Alterados",
         "anio": 2013,
         "genero": "Rock",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Fabriciana",
@@ -960,7 +1066,8 @@
         "album": "Otras Canciones",
         "anio": 2005,
         "genero": "Rock",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Genios Anonimos",
@@ -969,7 +1076,8 @@
         "album": "Genios Anonimos",
         "anio": 2008,
         "genero": "Rock",
-        "duracion": 220
+        "duracion": 220,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Las Cosas que No Digo",
@@ -978,7 +1086,8 @@
         "album": "Genios Anonimos",
         "anio": 2008,
         "genero": "Rock",
-        "duracion": 225
+        "duracion": 225,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Puerto Pollensa",
@@ -987,7 +1096,8 @@
         "album": "Donde el Viento Sopla Fuerte",
         "anio": 2010,
         "genero": "Rock",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Rockdrigo",
@@ -996,7 +1106,8 @@
         "album": "Estados Alterados",
         "anio": 2013,
         "genero": "Rock",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Divina Anarquia",
@@ -1005,7 +1116,8 @@
         "album": "Bang Bang",
         "anio": 1989,
         "genero": "Rock",
-        "duracion": 230
+        "duracion": 230,
+        "mi_puntaje": 0
     },
     {
         "titulo": "El Infierno Esta Encantador Esta Noche",
@@ -1014,7 +1126,8 @@
         "album": "Gulp!",
         "anio": 1985,
         "genero": "Rock",
-        "duracion": 233
+        "duracion": 233,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Fusilados por la Cruz Roja",
@@ -1023,7 +1136,8 @@
         "album": "La Mosca y la Sopa",
         "anio": 1994,
         "genero": "Rock",
-        "duracion": 240
+        "duracion": 240,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ji Ji Ji",
@@ -1032,7 +1146,8 @@
         "album": "Oktubre",
         "anio": 1986,
         "genero": "Rock",
-        "duracion": 208
+        "duracion": 208,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Juguetes Perdidos",
@@ -1041,7 +1156,8 @@
         "album": "Luzbelito",
         "anio": 1996,
         "genero": "Rock",
-        "duracion": 292
+        "duracion": 292,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Preso en mi Ciudad",
@@ -1050,7 +1166,8 @@
         "album": "Gulp!",
         "anio": 1985,
         "genero": "Rock",
-        "duracion": 300
+        "duracion": 300,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Toxi-Taxi",
@@ -1059,7 +1176,8 @@
         "album": "La Mosca y la Sopa",
         "anio": 1994,
         "genero": "Rock",
-        "duracion": 270
+        "duracion": 270,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Un Angel para tu Soledad",
@@ -1068,7 +1186,8 @@
         "album": "Lobo Suelto, Cordero Atado",
         "anio": 1993,
         "genero": "Rock",
-        "duracion": 300
+        "duracion": 300,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Vasos y Botellas",
@@ -1077,7 +1196,8 @@
         "album": "Gulp!",
         "anio": 1985,
         "genero": "Rock",
-        "duracion": 260
+        "duracion": 260,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Vencedores Vencidos",
@@ -1086,7 +1206,8 @@
         "album": "Un Baion Para el Ojo Idiota",
         "anio": 1991,
         "genero": "Rock",
-        "duracion": 271
+        "duracion": 271,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Nothing Else Matters",
@@ -1095,7 +1216,8 @@
         "album": "Metallica (Black Album)",
         "anio": 1991,
         "genero": "Rock",
-        "duracion": 388
+        "duracion": 388,
+        "mi_puntaje": 0
     },
     {
         "titulo": "A Este Lado del Camino",
@@ -1104,7 +1226,8 @@
         "album": "Dos Colores",
         "anio": 2016,
         "genero": "Rock",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Buenos Dias Mundo Cruel",
@@ -1113,7 +1236,8 @@
         "album": "Buena Suerte",
         "anio": 2011,
         "genero": "Rock",
-        "duracion": 220
+        "duracion": 220,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Chau",
@@ -1122,7 +1246,8 @@
         "album": "Este Fin de Semana",
         "anio": 2006,
         "genero": "Rock",
-        "duracion": 230
+        "duracion": 230,
+        "mi_puntaje": 10
     },
     {
         "titulo": "El Camino Mas Largo",
@@ -1131,7 +1256,8 @@
         "album": "Casi Nada",
         "anio": 2000,
         "genero": "Rock",
-        "duracion": 205
+        "duracion": 205,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sabado",
@@ -1140,7 +1266,8 @@
         "album": "Suenos del Bicentenario",
         "anio": 2010,
         "genero": "Rock",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sale el Sol",
@@ -1149,7 +1276,8 @@
         "album": "No Te Va Gustar",
         "anio": 1998,
         "genero": "Rock",
-        "duracion": 200
+        "duracion": 200,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sanguchito de Miga",
@@ -1158,7 +1286,8 @@
         "album": "Al Vacio",
         "anio": 2003,
         "genero": "Rock",
-        "duracion": 195
+        "duracion": 195,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sin Vos",
@@ -1167,7 +1296,8 @@
         "album": "Este Fin de Semana",
         "anio": 2006,
         "genero": "Rock",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Sos Para Mi",
@@ -1176,7 +1306,8 @@
         "album": "No Te Va Gustar",
         "anio": 1998,
         "genero": "Rock",
-        "duracion": 210
+        "duracion": 210,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Ya Es Tarde",
@@ -1185,7 +1316,8 @@
         "album": "Al Vacio",
         "anio": 2003,
         "genero": "Rock",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Another One Bites the Dust",
@@ -1194,7 +1326,8 @@
         "album": "The Game",
         "anio": 1980,
         "genero": "Rock",
-        "duracion": 215
+        "duracion": 215,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Bohemian Rhapsody",
@@ -1203,7 +1336,8 @@
         "album": "A Night at the Opera",
         "anio": 1975,
         "genero": "Rock",
-        "duracion": 355
+        "duracion": 355,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Don't Stop Me Now",
@@ -1212,7 +1346,8 @@
         "album": "Jazz",
         "anio": 1978,
         "genero": "Rock",
-        "duracion": 209
+        "duracion": 209,
+        "mi_puntaje": 0
     },
     {
         "titulo": "I Want to Break Free",
@@ -1221,7 +1356,8 @@
         "album": "The Works",
         "anio": 1984,
         "genero": "Rock",
-        "duracion": 220
+        "duracion": 220,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Killer Queen",
@@ -1230,7 +1366,8 @@
         "album": "Sheer Heart Attack",
         "anio": 1974,
         "genero": "Rock",
-        "duracion": 182
+        "duracion": 182,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Love of My Life",
@@ -1239,7 +1376,8 @@
         "album": "A Night at the Opera",
         "anio": 1975,
         "genero": "Rock",
-        "duracion": 219
+        "duracion": 219,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Radio Ga Ga",
@@ -1248,7 +1386,8 @@
         "album": "The Works",
         "anio": 1984,
         "genero": "Rock",
-        "duracion": 345
+        "duracion": 345,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Somebody to Love",
@@ -1257,7 +1396,8 @@
         "album": "A Day at the Races",
         "anio": 1976,
         "genero": "Rock",
-        "duracion": 297
+        "duracion": 297,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Under Pressure",
@@ -1266,7 +1406,8 @@
         "album": "Hot Space",
         "anio": 1982,
         "genero": "Rock",
-        "duracion": 246
+        "duracion": 246,
+        "mi_puntaje": 0
     },
     {
         "titulo": "We Are the Champions",
@@ -1275,7 +1416,8 @@
         "album": "News of the World",
         "anio": 1977,
         "genero": "Rock",
-        "duracion": 179
+        "duracion": 179,
+        "mi_puntaje": 0
     },
     {
         "titulo": "We Will Rock You",
@@ -1284,7 +1426,8 @@
         "album": "News of the World",
         "anio": 1977,
         "genero": "Rock",
-        "duracion": 122
+        "duracion": 122,
+        "mi_puntaje": 0
     },
     {
         "titulo": "De musica ligera",
@@ -1293,7 +1436,8 @@
         "album": "Cancion animal",
         "anio": 1990,
         "genero": "Rock",
-        "duracion": 216
+        "duracion": 216,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Persiana americana",
@@ -1302,7 +1446,8 @@
         "album": "Signos",
         "anio": 1986,
         "genero": "Rock",
-        "duracion": 265
+        "duracion": 265,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Battery",
@@ -1311,7 +1456,8 @@
         "album": "Master of Puppets",
         "anio": 1986,
         "genero": "Thrash Metal",
-        "duracion": 312
+        "duracion": 312,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Fade to Black",
@@ -1320,7 +1466,8 @@
         "album": "Ride the Lightning",
         "anio": 1984,
         "genero": "Thrash Metal",
-        "duracion": 417
+        "duracion": 417,
+        "mi_puntaje": 0
     },
     {
         "titulo": "For Whom the Bell Tolls",
@@ -1329,7 +1476,8 @@
         "album": "Ride the Lightning",
         "anio": 1984,
         "genero": "Thrash Metal",
-        "duracion": 310
+        "duracion": 310,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Master of Puppets",
@@ -1338,7 +1486,8 @@
         "album": "Master of Puppets",
         "anio": 1986,
         "genero": "Thrash Metal",
-        "duracion": 515
+        "duracion": 515,
+        "mi_puntaje": 0
     },
     {
         "titulo": "One",
@@ -1347,7 +1496,8 @@
         "album": "...And Justice for All",
         "anio": 1988,
         "genero": "Thrash Metal",
-        "duracion": 447
+        "duracion": 447,
+        "mi_puntaje": 0
     },
     {
         "titulo": "Seek and Destroy",
@@ -1356,6 +1506,7 @@
         "album": "Kill 'Em All",
         "anio": 1983,
         "genero": "Thrash Metal",
-        "duracion": 412
+        "duracion": 412,
+        "mi_puntaje": 0
     }
 ]
