@@ -244,14 +244,14 @@ Se eligió el heap porque permite insertar en O(log n) y extraer el máximo en O
 
 # Estado del proyecto
 
-| TP | Contenido | Estado |
-|----|-----------|--------|
-| TP1 | Objetos y clases | ✅ |
-| TP2 | Análisis de complejidad, búsqueda secuencial vs árbol | ✅ |
-| TP3 | Árbol binario de búsqueda (BST), recorridos | ✅ |
-| TP4 | AVL, rotaciones, comparación contra BST desbalanceado | ✅ |
-| TP5 | Árbol general (n-ario) de categorías musicales | ✅ |
-| TP6 | Heap binaria, ranking Top-N, calificación persistente | ✅ |
+| TP | Contenido |
+|----|-----------|
+| TP1 | Objetos y clases 
+| TP2 | Análisis de complejidad, búsqueda secuencial vs árbol 
+| TP3 | Árbol binario de búsqueda (BST), recorridos 
+| TP4 | AVL, rotaciones, comparación contra BST desbalanceado 
+| TP5 | Árbol general (n-ario) de categorías musicales 
+| TP6 | Heap binaria, ranking Top-N, calificación persistente 
 
 Versión actual: 4.0. 
 Próxima etapa: grafos.
