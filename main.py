@@ -5,7 +5,6 @@ import random
 
 RUTA_DATOS = os.path.join("datos", "canciones.json")
 
-
 class Artista:
     def __init__(self, nombre, pais):
         self._nombre = nombre
@@ -109,10 +108,6 @@ class Cancion:
         )
 
 
-# ---------------------------------------------------------------------------
-# ÁRBOL BINARIO (AVL + BST común)
-# ---------------------------------------------------------------------------
-
 class NodoArbol:
     def __init__(self, cancion):
         self.cancion = cancion
@@ -120,19 +115,11 @@ class NodoArbol:
         self.derecha = None
 
 
-# ---------------------------------------------------------------------------
-# ÁRBOL GENERAL (n-ario)
-# ---------------------------------------------------------------------------
-
 class NodoGeneral:
     def __init__(self, nombre):
         self.nombre = nombre
         self.hijos = []
 
-
-# ---------------------------------------------------------------------------
-# HEAP DE RECOMENDACIONES (TP6)
-# ---------------------------------------------------------------------------
 
 class HeapRecomendaciones:
     def __init__(self):
@@ -234,10 +221,6 @@ def comparar_heap_vs_ordenamiento(canciones, n=5):
 
     return top_heap, top_ordenamiento
 
-
-# ---------------------------------------------------------------------------
-# AVL
-# ---------------------------------------------------------------------------
 
 def insertar_arbol(raiz, cancion):
     if raiz is None:
@@ -381,10 +364,6 @@ def rotacion_izquierda(x):
     return y
 
 
-# ---------------------------------------------------------------------------
-# CARGA Y GUARDADO
-# ---------------------------------------------------------------------------
-
 def cargar_canciones(ruta):
     with open(ruta, "r", encoding="utf-8") as archivo:
         datos = json.load(archivo)
@@ -409,10 +388,6 @@ def guardar_puntajes(canciones, ruta):
     with open(ruta, "w", encoding="utf-8") as archivo:
         json.dump(datos, archivo, ensure_ascii=False, indent=4)
 
-
-# ---------------------------------------------------------------------------
-# BÚSQUEDAS Y FILTROS
-# ---------------------------------------------------------------------------
 
 def listar_canciones(canciones):
     return canciones
@@ -447,10 +422,6 @@ def mostrar_resultados(resultados, mensaje_vacio):
     else:
         print(mensaje_vacio)
 
-
-# ---------------------------------------------------------------------------
-# ÁRBOL GENERAL DE CATEGORÍAS
-# ---------------------------------------------------------------------------
 
 def crear_arbol_categorias():
     raiz = NodoGeneral("Música")
@@ -493,10 +464,6 @@ def buscar_categoria(nodo, nombre):
             return resultado
     return None
 
-
-# ---------------------------------------------------------------------------
-# EXPERIMENTOS
-# ---------------------------------------------------------------------------
 
 def generar_canciones_prueba(cantidad):
     canciones = []
@@ -614,11 +581,221 @@ def experimento_complejidad(canciones):
     print("Busqueda AVL: O(log n)")
 
 
-# ---------------------------------------------------------------------------
-# MENÚ
-# ---------------------------------------------------------------------------
+class GrafoCanciones:
+    def __init__(self):
+        self.adyacencias = {}
 
-def menu(canciones, raiz):
+    def agregar_cancion(self, titulo):
+        titulo = titulo.strip()
+        if titulo not in self.adyacencias:
+            self.adyacencias[titulo] = set()
+
+    def conectar(self, cancion1, cancion2):
+        cancion1 = cancion1.strip()
+        cancion2 = cancion2.strip()
+
+        self.agregar_cancion(cancion1)
+        self.agregar_cancion(cancion2)
+
+        if cancion1 != cancion2:
+            self.adyacencias[cancion1].add(cancion2)
+            self.adyacencias[cancion2].add(cancion1)
+
+    def buscar_vertice(self, titulo):
+        titulo = titulo.strip().casefold()
+
+        for vertice in self.adyacencias:
+            if vertice.casefold() == titulo:
+                return vertice
+
+        return None
+
+    def sugerir(self, texto, maximo=5):
+        texto = texto.strip().casefold()
+
+        if not texto:
+            return []
+
+        return sorted(
+            t for t in self.adyacencias if texto in t.casefold()
+        )[:maximo]
+
+    def avisar_inexistente(self, titulo):
+        print("La canción no existe en el grafo.")
+
+        sugerencias = self.sugerir(titulo)
+
+        if sugerencias:
+            print("¿Quisiste decir alguna de estas?")
+            for sugerencia in sugerencias:
+                print(f"  - {sugerencia}")
+
+    def mostrar_relaciones(self):
+        for cancion, relacionadas in self.adyacencias.items():
+            print(f"\n{cancion}:")
+
+            if relacionadas:
+                for relacionada in sorted(relacionadas):
+                    print(f"  - {relacionada}")
+            else:
+                print("  Sin canciones relacionadas.")
+
+    def buscar_relacionadas(self, titulo):
+        cancion_encontrada = self.buscar_vertice(titulo)
+
+        if cancion_encontrada is None:
+            self.avisar_inexistente(titulo)
+            return
+
+        relacionadas = self.adyacencias[cancion_encontrada]
+
+        if not relacionadas:
+            print("Esta canción no tiene relaciones.")
+            return
+
+        print(
+            f"\nCanciones relacionadas con {cancion_encontrada} "
+            f"({len(relacionadas)}):"
+        )
+
+        for relacionada in sorted(relacionadas):
+            print(f"- {relacionada}")
+
+    def camino_mas_corto(self, origen, destino):
+        padres = {origen: None}
+        cola = [origen]
+        indice = 0
+
+        while indice < len(cola):
+            actual = cola[indice]
+            indice += 1
+
+            if actual == destino:
+                break
+
+            for vecino in sorted(self.adyacencias[actual]):
+                if vecino not in padres:
+                    padres[vecino] = actual
+                    cola.append(vecino)
+
+        if destino not in padres:
+            return []
+
+        camino = []
+        nodo = destino
+
+        while nodo is not None:
+            camino.append(nodo)
+            nodo = padres[nodo]
+
+        camino.reverse()
+        return camino
+
+    def mas_conectadas(self, n=5):
+        ranking = sorted(
+            self.adyacencias.items(),
+            key=lambda par: (-len(par[1]), par[0])
+        )
+
+        return [(titulo, len(vecinos)) for titulo, vecinos in ranking[:n]]
+
+    def estadisticas(self):
+        vertices = len(self.adyacencias)
+        grados = [len(vecinos) for vecinos in self.adyacencias.values()]
+        aristas = sum(grados) // 2
+        posibles = vertices * (vertices - 1) // 2
+
+        return {
+            "vertices": vertices,
+            "aristas": aristas,
+            "densidad": aristas / posibles if posibles else 0,
+            "grado_promedio": sum(grados) / vertices if vertices else 0,
+            "grado_maximo": max(grados) if grados else 0,
+            "aislados": sorted(
+                t for t, vecinos in self.adyacencias.items() if not vecinos
+            ),
+        }
+
+
+def construir_grafo(canciones):
+    grafo = GrafoCanciones()
+
+
+    for cancion in canciones:
+        grafo.agregar_cancion(cancion.titulo)
+
+
+    for i in range(len(canciones)):
+        for j in range(i + 1, len(canciones)):
+            cancion1 = canciones[i]
+            cancion2 = canciones[j]
+
+            mismo_artista = (
+                cancion1.artista.nombre == cancion2.artista.nombre
+            )
+
+            mismo_genero = (
+                cancion1.genero.nombre == cancion2.genero.nombre
+            )
+
+            if mismo_artista or mismo_genero:
+                grafo.conectar(cancion1.titulo, cancion2.titulo)
+
+    return grafo
+
+
+def mostrar_camino(grafo, origen, destino):
+    inicio = grafo.buscar_vertice(origen)
+    fin = grafo.buscar_vertice(destino)
+
+    if inicio is None:
+        grafo.avisar_inexistente(origen)
+        return
+
+    if fin is None:
+        grafo.avisar_inexistente(destino)
+        return
+
+    camino = grafo.camino_mas_corto(inicio, fin)
+
+    if not camino:
+        print("No hay camino entre esas dos canciones.")
+        return
+
+    saltos = len(camino) - 1
+    palabra = "salto" if saltos == 1 else "saltos"
+
+    print(f"\nCamino más corto ({saltos} {palabra}):")
+    print(" -> ".join(camino))
+
+
+def mostrar_mas_conectadas(grafo, n=5):
+    print("\n===== CANCIONES MAS CONECTADAS =====")
+
+    for puesto, (titulo, grado) in enumerate(grafo.mas_conectadas(n), start=1):
+        print(f"{puesto}. {titulo} - {grado} relaciones")
+
+
+def mostrar_estadisticas(grafo):
+    est = grafo.estadisticas()
+
+    print("\n===== ESTADISTICAS DEL GRAFO =====")
+    print(f"Vertices (canciones): {est['vertices']}")
+    print(f"Aristas (relaciones): {est['aristas']}")
+    print(f"Densidad: {est['densidad']:.3f}")
+    print(f"Grado promedio: {est['grado_promedio']:.1f}")
+    print(f"Grado maximo: {est['grado_maximo']}")
+    print(
+        f"Entradas en la lista de adyacencia: {2 * est['aristas']} "
+        f"(una matriz usaria {est['vertices'] ** 2} celdas)"
+    )
+    print(f"Canciones sin relaciones: {len(est['aislados'])}")
+
+    for titulo in est["aislados"]:
+        print(f"  - {titulo}")
+
+
+def menu(canciones, raiz, grafo):
     while True:
         print("\n" + "-" * 50)
         print("MusicBox".center(50))
@@ -635,6 +812,7 @@ def menu(canciones, raiz):
         print("10. Experimento de complejidad")
         print("11. Comparar BST común vs. AVL")
         print("12. Comparar Heap vs. ordenamiento")
+        print("13. Explorar relaciones entre canciones (grafo)")
         print("0.  Salir")
 
         opcion = input("\nElegi una opcion: ")
@@ -679,7 +857,8 @@ def menu(canciones, raiz):
                     print(f"{prefijo} {cancion.titulo} - Puntaje: {puntaje}/10")
 
         elif opcion == "6":
-            print("Funcion de canciones relacionadas.")
+            titulo = input("Ingresa el titulo de la cancion: ")
+            grafo.buscar_relacionadas(titulo)
 
         elif opcion == "7":
             titulo = input("Ingrese el titulo de la cancion: ")
@@ -733,6 +912,31 @@ def menu(canciones, raiz):
         elif opcion == "12":
             comparar_heap_vs_ordenamiento(canciones, 5)
 
+        elif opcion == "13":
+            print("\n1. Mostrar todas las relaciones")
+            print("2. Buscar canciones relacionadas")
+            print("3. Camino mas corto entre dos canciones")
+            print("4. Canciones mas conectadas")
+            print("5. Estadisticas del grafo")
+
+            subopcion = input("Elegi una opcion: ")
+
+            if subopcion == "1":
+                grafo.mostrar_relaciones()
+            elif subopcion == "2":
+                titulo = input("Ingresa el titulo de la cancion: ")
+                grafo.buscar_relacionadas(titulo)
+            elif subopcion == "3":
+                origen = input("Cancion de origen: ")
+                destino = input("Cancion de destino: ")
+                mostrar_camino(grafo, origen, destino)
+            elif subopcion == "4":
+                mostrar_mas_conectadas(grafo)
+            elif subopcion == "5":
+                mostrar_estadisticas(grafo)
+            else:
+                print("Opcion invalida.")
+
         elif opcion == "0":
             print("Saliendo de MusicBox...")
             break
@@ -740,10 +944,6 @@ def menu(canciones, raiz):
         else:
             print("Opcion invalida.")
 
-
-# ---------------------------------------------------------------------------
-# MAIN
-# ---------------------------------------------------------------------------
 
 def main():
     canciones = cargar_canciones(RUTA_DATOS)
@@ -757,7 +957,14 @@ def main():
     print("Factor de equilibrio de la raiz:", factor_equilibrio(raiz))
     print("¿Arbol AVL equilibrado?:", arbol_equilibrado(raiz))
 
-    menu(canciones, raiz)
+    grafo = construir_grafo(canciones)
+    est = grafo.estadisticas()
+    print(
+        f"Grafo de canciones: {est['vertices']} vertices, "
+        f"{est['aristas']} aristas"
+    )
+
+    menu(canciones, raiz, grafo)
 
 
 if __name__ == "__main__":
