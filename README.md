@@ -1,4 +1,4 @@
-# MusicBox, versión 5.0
+# MusicBox, versión 6.0
 
 Sistema de recomendaciones musicales. Trabajo Práctico Integrador de Estructuras de Datos.
 
@@ -9,6 +9,7 @@ Sistema de recomendaciones musicales. Trabajo Práctico Integrador de Estructura
 | 3.0 | Árbol general (n-ario) de categorías integrado a la terminal | TP5 |
 | 4.0 | Heap binaria de recomendaciones, calificación persistente y ranking Top-N | TP6 |
 | 5.0 | Grafo de canciones relacionadas, consultas y camino más corto (BFS) | TP7 |
+| 6.0 | Recorridos del grafo: BFS y DFS, con dos casos de uso y análisis de complejidad | TP8 |
 
 # Descripción
 
@@ -72,7 +73,7 @@ sucesivas entregas.
 10. Experimento de complejidad: compara búsqueda secuencial vs AVL con distintos tamaños de entrada.
 11. Comparar BST común vs. AVL: experimento de desbalance con títulos insertados en orden alfabético.
 12. Comparar Heap vs. ordenamiento: mide el tiempo de obtener el Top-N con heap versus ordenar todo el catálogo.
-13. Explorar relaciones entre canciones (grafo): submenú con cinco consultas: (1) mostrar todas las relaciones, (2) buscar canciones relacionadas, (3) camino más corto entre dos canciones, (4) canciones más conectadas y (5) estadísticas del grafo.
+13. Explorar relaciones entre canciones (grafo): submenú con nueve consultas: (1) mostrar todas las relaciones, (2) buscar canciones relacionadas, (3) camino más corto entre dos canciones, (4) canciones más conectadas, (5) estadísticas del grafo, (6) canciones por distancia con BFS, (7) exploración en profundidad con DFS, (8) grupos de canciones conectadas con DFS y (9) comparación entre BFS y DFS.
 
 # Modelo de clases
 
@@ -375,6 +376,142 @@ La distancia máxima entre dos canciones conectadas es de 2 saltos. Como consecu
 - El vértice se identifica por el título: dos canciones con el mismo título se fusionarían en un solo vértice. En este catálogo los 151 títulos son únicos.
 - Los títulos se buscan por coincidencia exacta (sin distinguir mayúsculas); si no hay coincidencia, el programa sugiere títulos que contienen el texto.
 
+# TP8: Recorridos, explorá la red
+
+## Objetivo
+
+Usar recorridos de grafos para responder preguntas reales sobre el catálogo. Se implementan BFS (búsqueda en anchura) y DFS (búsqueda en profundidad) sobre el mismo grafo del TP7, sin cambiar su representación.
+
+## Qué hace cada algoritmo
+
+- BFS visita primero las canciones más cercanas al origen: primero las que están a 1 salto, después las de 2 saltos, y así sucesivamente. Usa una cola (primero en entrar, primero en salir).
+- DFS toma una conexión y profundiza todo lo posible antes de retroceder y probar otra. Usa una pila (último en entrar, primero en salir).
+
+En los dos casos se guarda un conjunto de visitados para no recorrer dos veces la misma canción. Los vecinos se visitan en orden alfabético, para que el resultado sea siempre el mismo.
+
+## Casos de uso
+
+| Algoritmo | Pregunta que responde | Dónde se usa |
+|-----------|-----------------------|--------------|
+| BFS | Qué canciones hay a 1, 2, 3... saltos de una canción dada, y cuál es el camino más corto entre dos canciones | Opción 13, subopciones 6 y 3 |
+| DFS | Qué canciones se alcanzan desde una canción explorando en profundidad, y cuántos grupos de canciones conectadas tiene el catálogo | Opción 13, subopciones 7 y 8 |
+
+Por qué BFS en el primer caso: la distancia entre dos canciones es la cantidad de aristas del camino, y BFS descubre cada canción por primera vez con la menor cantidad posible de saltos. Una recomendación a 1 salto es más cercana que una a 2 saltos, y BFS entrega esa información ordenada por niveles.
+
+Por qué DFS en el segundo caso: para saber qué canciones se alcanzan desde una dada alcanza con visitar cada una una vez, y la pila lo resuelve recorriendo hasta el fondo antes de retroceder. Aplicado a todo el catálogo, repetir DFS desde cada canción todavía no visitada separa los grupos de canciones conectadas (componentes conexas). Para solo alcanzar canciones BFS también serviría; DFS es la opción natural cuando importa el recorrido completo de un grupo y no la distancia.
+
+## Implementación
+
+Los tres métodos están en la clase GrafoCanciones:
+
+| Método | Qué devuelve |
+|--------|--------------|
+| bfs(origen) | Lista de pares (canción, distancia) en el orden en que BFS las visita |
+| dfs(origen) | Lista de pares (canción, profundidad) en el orden en que DFS las visita |
+| componentes() | Lista de grupos de canciones conectadas, del más grande al más chico, armada llamando a dfs desde cada canción no visitada |
+
+| Estructura | Función |
+|------------|---------|
+| Lista con índice (cola de BFS) | Canciones pendientes. El índice evita hacer pop(0), que cuesta O(n) |
+| Diccionario de distancias | Marca las canciones ya descubiertas y guarda su distancia al origen |
+| Lista (pila de DFS) | Pares (canción, profundidad) pendientes, se extrae siempre el último |
+| Conjunto de visitados (DFS) | Evita repetir canciones |
+
+En la terminal se muestran con mostrar_niveles (opción 6), mostrar_exploracion (opción 7), mostrar_grupos (opción 8) y comparar_recorridos (opción 9) del submenú 13. Si el título no existe, se sugieren títulos parecidos, igual que en el resto del grafo. Si la canción no tiene relaciones, se informa.
+
+## Ejemplos de ejecución
+
+BFS desde A Este Lado del Camino (salida abreviada: de las 44 canciones a 1 salto solo se muestran las primeras tres):
+
+    Canciones por distancia desde A Este Lado del Camino (BFS):
+
+    A 1 salto (44):
+    - Al Fin Estamos Solos
+    - Another One Bites the Dust
+    - Bohemian Rhapsody
+
+    A 2 saltos (9):
+    - Battery
+    - Enter Sandman
+    - Fade to Black
+    - For Whom the Bell Tolls
+    - Master of Puppets
+    - One
+    - Sad But True
+    - Seek and Destroy
+    - Whiskey in the Jar
+
+Las 9 canciones a 2 saltos son las de Metallica que no son Rock: se llega a ellas a través de Nothing Else Matters, que es Rock y de Metallica a la vez.
+
+DFS desde Get Lucky, un grupo chico de 2 canciones:
+
+    Exploración en profundidad desde Get Lucky (DFS), 1 canción alcanzada:
+    - Get Lucky (profundidad 0)
+    - One More Time (profundidad 1)
+
+Grupos de canciones conectadas (DFS), primeras líneas:
+
+    Grupos de canciones conectadas (DFS): 15
+    1. 54 canciones (por ejemplo: A Este Lado del Camino, Al Fin Estamos Solos, Another One Bites the Dust)
+    2. 20 canciones (por ejemplo: Ando Rajao, Chica Sexy, Como Olvidarte)
+    3. 10 canciones (por ejemplo: Amerika, Deutschland, Du Hast)
+
+Canción sin relaciones:
+
+    Esta canción no tiene relaciones.
+
+Comparación desde A Este Lado del Camino:
+
+    Comparación de recorridos desde A Este Lado del Camino:
+    Canciones alcanzadas por BFS: 53
+    Canciones alcanzadas por DFS: 53
+    Distancia máxima en BFS: 2
+    Profundidad máxima en DFS: 44
+    Primeras visitadas por BFS: Al Fin Estamos Solos, Another One Bites the Dust, Bohemian Rhapsody, Buenos Dias Mundo Cruel, Cara de Rusa
+    Primeras visitadas por DFS: Al Fin Estamos Solos, Another One Bites the Dust, Bohemian Rhapsody, Buenos Dias Mundo Cruel, Cara de Rusa
+
+Resultado importante: los dos algoritmos alcanzan exactamente las mismas 53 canciones (se verificó para los 151 vértices), pero con una forma distinta. BFS ve el grupo en 2 niveles; DFS lo recorre como una cadena de profundidad 44, porque dentro de un grupo de canciones que comparten género cada canción está conectada con todas las demás y DFS siempre pasa a la primera que todavía no visitó.
+
+Las primeras cinco visitadas coinciden porque dentro de un grupo completo el orden alfabético es el mismo para los dos. Se separan en la canción número 26: BFS sigue con la siguiente canción a 1 salto (Persiana americana), mientras que DFS, al pasar por Nothing Else Matters, se mete enseguida en las canciones de Metallica (Battery) antes de terminar el grupo de Rock.
+
+## Diferencias entre BFS y DFS
+
+| Aspecto | BFS | DFS |
+|---------|-----|-----|
+| Estructura | Cola | Pila |
+| Orden de visita | Por niveles, de lo más cercano a lo más lejano | Hasta el fondo de una rama y después retrocede |
+| Camino más corto en aristas | Sí, garantizado | No |
+| Memoria | Guarda el nivel actual: en el peor caso O(V) | Guarda la rama actual y los vecinos pendientes: en el peor caso O(E) |
+| Uso típico | Distancias, recomendaciones por cercanía, camino mínimo | Exploración completa, componentes conexas, detectar ciclos |
+| En MusicBox | Opciones 13.6 y 13.3 | Opciones 13.7 y 13.8 |
+
+## Análisis de complejidad
+
+Sea V la cantidad de canciones y E la cantidad de relaciones. El grafo usa lista de adyacencia.
+
+| Algoritmo | Teórica | En esta implementación | Por qué |
+|-----------|---------|------------------------|---------|
+| BFS | O(V + E) | O(V + E log V) | Cada canción entra una vez a la cola y se recorre la lista de vecinos de cada una una sola vez. El log V extra viene de ordenar los vecinos con sorted para que el resultado sea siempre el mismo |
+| DFS | O(V + E) | O(V + E log V) | Cada canción se visita una vez y cada arista se mira dos veces, una por cada extremo. También ordena los vecinos |
+| componentes | O(V + E) | O(V + E log V) | Cada llamada a dfs trabaja solo sobre su grupo, así que entre todas visitan cada canción y cada arista una vez |
+
+- Con matriz de adyacencia ambos pasarían a O(V²), porque para cada canción habría que revisar las V columnas. Por eso la lista de adyacencia es la representación correcta para este grafo ralo (densidad 0,136).
+- En DFS la pila puede guardar la misma canción varias veces, una por cada vecino que la apiló antes de visitarla. Por eso en el peor caso crece hasta O(E) y no O(V). Se evita repetir el trabajo con el chequeo de visitados al extraer.
+- Medición con las 151 canciones, desde A Este Lado del Camino (54 canciones alcanzadas): BFS tarda unos 0,10 ms, DFS unos 0,16 ms y componentes unos 0,33 ms. DFS es algo más lento porque apila vecinos que después descarta por ya estar visitados.
+
+## Cuándo conviene cada uno
+
+- BFS cuando importa la cercanía: camino con menos saltos, recomendaciones por distancia, o cualquier pregunta del tipo cuál es lo más cercano.
+- DFS cuando importa recorrer todo un grupo: separar componentes conexas, explorar a fondo, o problemas que necesitan retroceder (ciclos, orden de dependencias).
+- Si solo hay que saber si una canción es alcanzable desde otra, ambos sirven y cuestan lo mismo.
+
+## Limitaciones
+
+- DFS está implementado de forma iterativa con pila propia, no recursiva, así que no depende del límite de recursión de Python. A cambio, el orden de visita es el de una pila, que puede diferir del de una versión recursiva.
+- Como los grupos de canciones son casi completos (todas se conectan con todas), DFS arma cadenas largas y la profundidad no refleja distancia real. Para medir cercanía hay que usar BFS.
+- camino_mas_corto (TP7) y bfs repiten parte de la lógica. camino_mas_corto corta apenas encuentra el destino y bfs recorre todo lo alcanzable.
+- Los resultados dependen de la relación elegida (artista o género). Con otra relación o un grafo pesado, BFS dejaría de dar el camino de menor costo y habría que usar Dijkstra.
+
 # Estado del proyecto
 
 | TP | Contenido | Estado |
@@ -386,7 +523,6 @@ La distancia máxima entre dos canciones conectadas es de 2 saltos. Como consecu
 | TP5 | Árbol general (n-ario) de categorías musicales | Completo |
 | TP6 | Heap binaria, ranking Top-N, calificación persistente | Completo |
 | TP7 | Grafo de canciones relacionadas, consultas y camino más corto | Completo |
+| TP8 | Recorridos del grafo: BFS y DFS, casos de uso y análisis de complejidad | Completo |
 
-Versión actual: 5.0.
-
-Proxima entrega Tp8
+Versión actual: 6.0.

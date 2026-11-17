@@ -5,6 +5,7 @@ import random
 
 RUTA_DATOS = os.path.join("datos", "canciones.json")
 
+
 class Artista:
     def __init__(self, nombre, pais):
         self._nombre = nombre
@@ -691,6 +692,59 @@ class GrafoCanciones:
         camino.reverse()
         return camino
 
+    def bfs(self, origen):
+        distancias = {origen: 0}
+        cola = [origen]
+        indice = 0
+        orden = []
+
+        while indice < len(cola):
+            actual = cola[indice]
+            indice += 1
+            orden.append((actual, distancias[actual]))
+
+            for vecino in sorted(self.adyacencias[actual]):
+                if vecino not in distancias:
+                    distancias[vecino] = distancias[actual] + 1
+                    cola.append(vecino)
+
+        return orden
+
+    def dfs(self, origen):
+        visitados = set()
+        pila = [(origen, 0)]
+        orden = []
+
+        while pila:
+            actual, profundidad = pila.pop()
+
+            if actual in visitados:
+                continue
+
+            visitados.add(actual)
+            orden.append((actual, profundidad))
+
+            for vecino in sorted(self.adyacencias[actual], reverse=True):
+                if vecino not in visitados:
+                    pila.append((vecino, profundidad + 1))
+
+        return orden
+
+    def componentes(self):
+        visitados = set()
+        grupos = []
+
+        for titulo in sorted(self.adyacencias):
+            if titulo in visitados:
+                continue
+
+            grupo = [cancion for cancion, _ in self.dfs(titulo)]
+            visitados.update(grupo)
+            grupos.append(grupo)
+
+        grupos.sort(key=lambda grupo: (-len(grupo), grupo[0]))
+        return grupos
+
     def mas_conectadas(self, n=5):
         ranking = sorted(
             self.adyacencias.items(),
@@ -767,6 +821,97 @@ def mostrar_camino(grafo, origen, destino):
 
     print(f"\nCamino más corto ({saltos} {palabra}):")
     print(" -> ".join(camino))
+
+
+def mostrar_niveles(grafo, titulo):
+    inicio = grafo.buscar_vertice(titulo)
+
+    if inicio is None:
+        grafo.avisar_inexistente(titulo)
+        return
+
+    recorrido = grafo.bfs(inicio)
+
+    if len(recorrido) == 1:
+        print("Esta canción no tiene relaciones.")
+        return
+
+    niveles = {}
+
+    for cancion, distancia in recorrido[1:]:
+        niveles.setdefault(distancia, []).append(cancion)
+
+    print(f"\nCanciones por distancia desde {inicio} (BFS):")
+
+    for distancia, canciones in niveles.items():
+        palabra = "salto" if distancia == 1 else "saltos"
+        print(f"\nA {distancia} {palabra} ({len(canciones)}):")
+
+        for cancion in canciones:
+            print(f"- {cancion}")
+
+
+def mostrar_exploracion(grafo, titulo):
+    inicio = grafo.buscar_vertice(titulo)
+
+    if inicio is None:
+        grafo.avisar_inexistente(titulo)
+        return
+
+    recorrido = grafo.dfs(inicio)
+
+    if len(recorrido) == 1:
+        print("Esta canción no tiene relaciones.")
+        return
+
+    alcanzadas = len(recorrido) - 1
+    palabra = "canción alcanzada" if alcanzadas == 1 else "canciones alcanzadas"
+
+    print(
+        f"\nExploración en profundidad desde {inicio} (DFS), "
+        f"{alcanzadas} {palabra}:"
+    )
+
+    for cancion, profundidad in recorrido:
+        print(f"- {cancion} (profundidad {profundidad})")
+
+
+def mostrar_grupos(grafo):
+    grupos = grafo.componentes()
+
+    print(f"\nGrupos de canciones conectadas (DFS): {len(grupos)}")
+
+    for numero, grupo in enumerate(grupos, start=1):
+        palabra = "canción" if len(grupo) == 1 else "canciones"
+        ejemplos = ", ".join(grupo[:3])
+        print(f"{numero}. {len(grupo)} {palabra} (por ejemplo: {ejemplos})")
+
+
+def comparar_recorridos(grafo, titulo):
+    inicio = grafo.buscar_vertice(titulo)
+
+    if inicio is None:
+        grafo.avisar_inexistente(titulo)
+        return
+
+    por_anchura = grafo.bfs(inicio)
+    por_profundidad = grafo.dfs(inicio)
+
+    if len(por_anchura) == 1:
+        print("Esta canción no tiene relaciones.")
+        return
+
+    print(f"\nComparación de recorridos desde {inicio}:")
+    print(f"Canciones alcanzadas por BFS: {len(por_anchura) - 1}")
+    print(f"Canciones alcanzadas por DFS: {len(por_profundidad) - 1}")
+    print(f"Distancia máxima en BFS: {max(d for _, d in por_anchura)}")
+    print(f"Profundidad máxima en DFS: {max(p for _, p in por_profundidad)}")
+
+    primeras_bfs = ", ".join(c for c, _ in por_anchura[1:6])
+    primeras_dfs = ", ".join(c for c, _ in por_profundidad[1:6])
+
+    print(f"Primeras visitadas por BFS: {primeras_bfs}")
+    print(f"Primeras visitadas por DFS: {primeras_dfs}")
 
 
 def mostrar_mas_conectadas(grafo, n=5):
@@ -850,11 +995,9 @@ def menu(canciones, raiz, grafo):
             if not recomendaciones:
                 print("No hay canciones calificadas todavia.")
             else:
-                medallas = ["🥇", "🥈", "🥉"]
                 for puesto, resultado in enumerate(recomendaciones, start=1):
                     puntaje, cancion = resultado
-                    prefijo = medallas[puesto - 1] if puesto <= 3 else f"{puesto}."
-                    print(f"{prefijo} {cancion.titulo} - Puntaje: {puntaje}/10")
+                    print(f"{puesto}. {cancion.titulo} - Puntaje: {puntaje}/10")
 
         elif opcion == "6":
             titulo = input("Ingresa el titulo de la cancion: ")
@@ -918,6 +1061,10 @@ def menu(canciones, raiz, grafo):
             print("3. Camino mas corto entre dos canciones")
             print("4. Canciones mas conectadas")
             print("5. Estadisticas del grafo")
+            print("6. Canciones por distancia (BFS)")
+            print("7. Explorar en profundidad (DFS)")
+            print("8. Grupos de canciones conectadas (DFS)")
+            print("9. Comparar BFS y DFS")
 
             subopcion = input("Elegi una opcion: ")
 
@@ -934,6 +1081,17 @@ def menu(canciones, raiz, grafo):
                 mostrar_mas_conectadas(grafo)
             elif subopcion == "5":
                 mostrar_estadisticas(grafo)
+            elif subopcion == "6":
+                titulo = input("Cancion de origen: ")
+                mostrar_niveles(grafo, titulo)
+            elif subopcion == "7":
+                titulo = input("Cancion de origen: ")
+                mostrar_exploracion(grafo, titulo)
+            elif subopcion == "8":
+                mostrar_grupos(grafo)
+            elif subopcion == "9":
+                titulo = input("Cancion de origen: ")
+                comparar_recorridos(grafo, titulo)
             else:
                 print("Opcion invalida.")
 
